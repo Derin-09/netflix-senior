@@ -1,0 +1,136 @@
+/*const[Answer, setAnswer] = useState<string[]>([])
+
+    setAnswer(["Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!",
+  "Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₦2,200 to ₦7,000 a month. No extra costs, no contracts."]) 
+
+const questions = ["What is Netflix?", "How much does Netflix cost?"]
+const answers = ["Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!",
+  "Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₦2,200 to ₦7,000 a month. No extra costs, no contracts."
+]
+
+const handleClick = () => {
+        setIsclicked(true)
+        if(!isClicked) {
+            setText("x")
+        }
+        else {
+            setIsclicked(false)
+            setText("+")
+        }
+        return(
+            isClicked
+        )
+    }
+
+    const handler = () => {
+        handleClick()
+        
+    }
+
+
+
+     <div>
+                    <div onClick={() => handleClick()} className='bg-neutral-800 hover:bg-neutral-700 hover:cursor-pointer ml-10 mr-8 mb-0.5 px-7 py-4 flex justify-between items-center'>
+                        <p className='text-lg'>What is Netflix?</p>
+                        <button  className='text-4xl font-extralight'>{text}
+                        </button>
+                    </div>
+                        <div className={`bg-neutral-800  ml-10 mr-8 mb-2 px-7 py-6 flex justify-between items-center text-lg ${isClicked === false ?  'hidden' : 'visible'}`}>
+                        Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices. <br/><br/>
+
+                        You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!
+                        </div>
+                    </div>
+                    <div>
+                    <div onClick={() => handleClick()} className='bg-neutral-800 hover:bg-neutral-700 hover:cursor-pointer ml-10 mr-8 mb-0.5 px-7 py-4 flex justify-between items-center'>
+                        <p className='text-lg'>How much does Netflix cost?</p>
+                        <button  className='text-4xl font-extralight'>{text}
+                        </button>
+                    </div>
+                        <div className={`bg-neutral-800  ml-10 mr-8 mb-2 px-7 py-6 flex justify-between items-center text-lg ${isClicked === false ?  'hidden' : 'visible'}`}>
+                        Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₦2,200 to ₦7,000 a month. No extra costs, no contracts.
+                        </div>
+                    </div>
+                   
+                    { 
+                    <div>
+                    <div onClick={() => handleClick()} className='bg-neutral-800 hover:bg-neutral-700 hover:cursor-pointer ml-10 mr-8 mb-0.5 px-7 py-4 flex justify-between items-center'>
+                        
+                        <p 
+                        onClick={() => handleClick()}
+                        className='bg-neutral-800 hover:bg-neutral-700 hover:cursor-pointer ml-10 mr-8 mb-0.5 px-7 py-4 flex justify-between items-center text-lg'>What is Netflix?</p>
+                    
+                        <button  className='text-4xl font-extralight'>{text}
+                        </button>
+                    </div>
+                      
+                        <div className={`bg-neutral-800  ml-10 mr-8 mb-2 px-7 py-6 flex justify-between items-center text-lg ${isClicked === false ?  'hidden' : 'visible'}`}>
+                        Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₦2,200 to ₦7,000 a month. No extra costs, no contracts.
+                        </div>
+                    </div>
+}
+
+
+<div>
+                    <div className='bg-neutral-800 hover:bg-neutral-700 hover:cursor-pointer ml-10 mr-8 mb-0.5 px-7 py-4 flex justify-between items-center'>
+                        <p 
+                        className='text-lg'
+                        onClick={() => setActive(active === opt.id ? null : opt.id)}>{opt.question}</p>
+                        <button  className='text-4xl font-extralight'>{text}
+                        </button>
+                    </div>
+                    {active === opt.id && (
+                        <div className={`bg-neutral-800  ml-10 mr-8 mb-2 px-7 py-6 flex justify-between items-center text-lg ${isClicked === false ?  'hidden' : 'visible'}`}>
+                        {opt.answer}
+                    </div>
+                    )}
+                    </div>
+
+
+
+                    
+        */
+
+
+*****************************TRENDING*****************************************
+
+        type Info = {
+    id: number;
+    rank: string;
+    prodDate: string;
+    rated: string;
+    kind: string;
+    genre: string;
+    description: string;
+}
+
+const details: Info[] = [
+{id: 1, rank: "1", prodDate: "2024", rated: "18+", kind: "Shows", genre: "Dramas", description: "An exotic dancer's fate takes a turn when she crosses paths with the dysfunctional family behind a cosmetics dynasty and a devious trafficking scheme."},
+ {id: 2, rank: "2", prodDate: "2023", rated: "13+", kind: "Movie", genre: "Dramas", description: "As a young woman prepares for her wedding, a secret from the past surfaces that threatens her family, her identity and everything she thought she knew."},
+ {id: 3, rank: "3", prodDate: "2025", rated: "18+", kind: "Show", genre: "Dramas", description: "A young pregnant woman accepts help from a high-profile organization offering support — and becomes a prisoner in their sinister plot."},
+ {id: 4, rank: "4", prodDate: "2024", rated: "16", kind: "Movie", genre: "Action", description: "Still on the run, journalist Eddie Brock and his alien companion Venom dodge threats from a vigilant military leader and ruthless invading symbiotes."},
+ {id: 5, rank: "5", prodDate: "2023", rated: "13+", kind: "Movie", genre: "Drama", description: "As a young woman prepares for her wedding, a secret from the past surfaces that threatens her family, her identity and everything she thought she knew."},
+ {id: 6, rank: "6", prodDate: "2023", rated: "13+", kind: "Movie", genre: "Drama", description: "As a young woman prepares for her wedding, a secret from the past surfaces that threatens her family, her identity and everything she thought she knew."}, ]
+
+
+
+<div className='bg-gray-300 h-[180px] w-[130px] rounded-2xl '>
+                        <p className=' font-extrabold text-black text-6xl mt-[110px] mr-[198px] z-20'>2</p>
+                    </div>
+                    <div className='bg-gray-300 h-[180px] w-[130px] rounded-2xl '>
+                        <p className=' font-extrabold text-black text-6xl mt-[110px] mr-[198px] z-20'>3</p>
+                    </div>
+                    <div className='bg-gray-300 h-[180px] w-[130px] rounded-2xl '>
+                        <p className=' font-extrabold text-black text-6xl mt-[110px] mr-[198px] z-20'>4</p>
+                    </div>
+                    <div className='bg-gray-300 h-[180px] w-[130px] rounded-2xl '>
+                        <p className=' font-extrabold text-black text-6xl mt-[110px] mr-[198px] z-20'>5</p>
+                    </div>
+                    <div className='bg-gray-300 h-[180px] w-[130px] rounded-2xl '>
+                        <p className=' font-extrabold text-black text-6xl mt-[110px] mr-[198px] z-20'>6</p>
+                    </div>
+
+
+                    {details.map((value) => (
+                        key={value.id}
+                        ))}

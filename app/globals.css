@@ -4,6 +4,13 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 @theme inline {
   --color-background: var(--background);
