@@ -3,10 +3,13 @@ import React from 'react'
 import Image from 'next/image'
 import Logo from '@/public/images/netflix.svg'
 import Sign from '@/public/images/Sign.png'
+import Link from 'next/link'
 import { useState } from 'react'
 import firebase from 'firebase/compat/app'
-import { auth } from '@/app/firebase'
+import { auth, db } from '@/app/firebase'
+import { useRouter } from 'next/navigation'
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
+import { addDoc, collection } from 'firebase/firestore'
 
 //signInWithEmailAndPassword(auth, email, password).then(() => route).catch(() => seterr)
 
@@ -15,7 +18,9 @@ const Signup = () => {
     const[isClicked, setIsclicked] = useState<boolean>(false)
     const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState("")
   const [error, setError] = useState('');
+  const router = useRouter()
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,10 +28,21 @@ const Signup = () => {
 
     try {
       // Firebase signup method
-      await firebase.auth().createUserWithEmailAndPassword(email, password);
-      console.log('User signed up successfully');
+      if(email === "" || password === ""){
+        alert("email and password cannot be empty")
+        return;
+      }
+      await createUserWithEmailAndPassword(auth, email, password).then(() =>{
+        addDoc(collection(db, "users"), {
+            name: name,
+            email: email,
+        })
+      })
+      alert('User signed up successfully');
+      router.push("./SuccessSignup")
     } catch (err) {
-      //setError(err.message);  // Handle signup errors
+      //setError(err.message);  // Handle signup 
+      alert(err)
     }
   };
 
@@ -35,7 +51,10 @@ const Signup = () => {
         <section >
         <div className='flex justify-between items-start w-full '>
                 <Image src={Logo} width={90} height={40} alt='logo' className='flex-[3fr] ml-8'/>
+                <Link href={'./Signin'}>
                 <button className='py-1.5 px-4 bg-red-700 text-white text- rounded-md flex-[1fr] float-end mr-8 mt-7 mb-9'>Sign in</button>
+                </Link>
+                
         </div>
         <hr className='h-[0.5px] bg-neutral-700'/>
           <section className='flex justify-center text-black'>
@@ -44,12 +63,20 @@ const Signup = () => {
             <p className='text-3xl text-neutral-700 font-bold max-w-[450px]'>Create a password to start your membership</p>
             <p className='text-xl  mt-4 max-w-[450px]'>Just a few more steps and you're done!
             We hate paperwork, too.</p>
-            <form onSubmit={(e) => handleSignUp}>
+            <form onSubmit={(e) => handleSignUp(e)}>
                 <input 
                 type='email' 
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder='Enter your email address...' 
+                required
+                className='w-[450px] my-3 border-1 p-5 rounded-sm'
+                /><br/>
+                <input 
+                type='name' 
+                value={name} 
+                onChange={(e) => setName(e.target.value)}
+                placeholder='Enter your name...' 
                 required
                 className='w-[450px] my-3 border-1 p-5 rounded-sm'
                 /><br/>

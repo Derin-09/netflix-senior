@@ -23,7 +23,7 @@ const Footer = () => {
                     <div className='mt-9 ml-10 mr-8 text-neutral-400 underline flex gap-[300px] leading-[34px] text-sm'>
                         <section>
                             <ul>
-                                <li><Link href={"./components/FAQ"} >FAQ</Link></li>
+                                <li className='hover:text-red-600'><Link href={"./components/FAQ"} >FAQ</Link></li>
                                 <li><Link href={""}>Account</Link></li>
                                 <li><Link href={""}>Investor Relations</Link></li>
                                 <li><Link href={""}>Ways to Watch</Link></li>

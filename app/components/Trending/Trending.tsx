@@ -1,119 +1,134 @@
 'use client'
+
 import React, { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 import Image from 'next/image'
-import Next from '@/public/images/next.svg'
-import Link from 'next/link';
+import Link from 'next/link'
+import NextIcon from '@/public/images/next.svg'
 
-type about = {
-    Title: string;
-    Year: string;
-    Genre: string;
-    Rated: string;
-    Poster: string;
+type Movie = {
+  id: number
+  title: string
+  poster_path: string
+  overview: string
+  release_date: string
 }
 
 const Trending = () => {
-    const[isClicked, setIsclicked] = useState<boolean>(false)
-    const[active, setActive] = useState<number | null>(null)
-    const[about, setAbout] = useState<about | undefined>()
-    const[loading, setLoading] = useState<boolean>(true)
+  const [movies, setMovies] = useState<Movie[]>([])
+  const [loading, setLoading] = useState(true)
+  const [isClicked, setIsClicked] = useState(false)
+  const [active, setActive] = useState<Movie | null>(null)
 
-    const Num: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+  const Numnum = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
+  useEffect(() => {
     const fetchDetails = async () => {
-        const url = 'https://1mdb-data-searching.p.rapidapi.com/om?i=tt1285016';
-        const options = {
-            method: 'GET',
-            headers: {
-                'x-rapidapi-key':'c3ed4799e0msh3de735be15dbbd8p14877djsn3c5cafdd735c',
-                'x-rapidapi-host': '1mdb-data-searching.p.rapidapi.com'
-            }
-        };
-        
-        try {
-            const response = await fetch(url, options);
-              const result = await response.json();
-              console.log(result);
-                setLoading(false);
-                setAbout(result);
-        } catch (error) {
-            console.error("Fetch error:", error);
-            setLoading(false)
-        }
-    }
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZTNiNzMxODQzZjgyYTI5ZTBkZjZhODlmOTkzMjlkNCIsIm5iZiI6MTc0NDI5NTM0Ny43MDEsInN1YiI6IjY3ZjdkNWIzZDNhYjdkN2E4YmFkNTJjMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2gPACKRazm9HtNi8UeezxgYRzoCl18zXvmShmVGR4jw',
+        },
+      }
 
-    useEffect(() => {
-        fetchDetails()
-        }, [])
-
-    const handleClick = () => {
-        setIsclicked(true)
-        if(!isClicked) {
-            
-        }
-        else {
-            setIsclicked(false) 
-        }
-        return(
-            isClicked
+      try {
+        const res = await fetch(
+          'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc',
+          options
         )
+        const data = await res.json()
+        setMovies(data.results)
+        setLoading(false)
+      } catch (err) {
+        console.error(err)
+      }
     }
 
-   
+    fetchDetails()
+  }, [])
+
+  const handleClick = (movie: Movie) => {
+    setActive(movie)
+    setIsClicked(true)
+  }
+
   return (
     <main>
-        <p className='font-bold pl-10 text-white text-xl'>Trending Now</p>
-        <div  >
-                <div  className='flex gap-4 pt-3 pl-10 pr-5 pb-15 w-full overflow-x-auto whitespace-nowrap scroll-smooth'>
-                { Num.map((value, index) => ( loading ?  
-                    <div 
-                    key={index}
-                    onClick={handleClick} 
-                     className='bg-gray-300 h-[180px] w-[130px] rounded-2xl hover: cursor-pointer'>
-                        <p className=' font-extrabold text-black text-6xl mt-[110px] mr-[198px] z-20'>{value}</p>
-                        <p>Loading...</p>
-                    </div> : 
-                    <div 
-                    key={index}
-                    onClick={() => {setIsclicked(true);
-                        setActive(index);}} 
-                     className='bg-gray-300 h-[180px] w-[130px] rounded-2xl hover: cursor-pointer'>
-                        <img src={about?.Poster || '@/public/images/next.svg'} alt={about?.Title}/>
-                        <p className=' font-extrabold text-black text-6xl mt-[110px] mr-[198px] z-20'>{value}</p>
-                        </div>
-                ))}
-                
+      <p className="font-bold pl-10 text-white text-xl mb-4">Trending Now</p>
+
+      <Swiper
+        modules={[Navigation, Pagination]}
+        pagination={{ clickable: true }}
+        navigation
+        spaceBetween={30}
+        slidesPerView={6}
+        loop
+        breakpoints={{
+          640: { slidesPerView: 2 },
+          768: { slidesPerView: 6 },
+          1024: { slidesPerView: 5 },
+        }}
+
+        className="rounded-2xl overflow-hidden shadow-xl"
+      >
+        {!loading &&
+          movies.map((movie) => (
+            <SwiperSlide key={movie.id}>
+              <div
+                onClick={() => handleClick(movie)}
+                className="min-w-[130px] h-[170px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
+                style={{
+                  backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
+                }}
+              >
+                <div className="absolute bottom-0 bg-black/60 w-full text-white text-xs text-center py-1">
+                  {movie.title}
                 </div>
-                    <div className={`flex justify-center w-full h-full fixed top-[50px] z-30 ${isClicked ? 'visible' : 'hidden'}`}>
-                        
-                            <div 
-                            
-                            className='relative bg-neutral-800 border-2 border-white w-[700px] max-h-[350px] overflow-y-auto pl-9 '>
-                            <p 
-                            onClick={() => setIsclicked(!isClicked)} className='fixed top-[60px] right-[150px] text-3xl z-20  mt-3 hover:cursor-pointer hover:p-2 hover:bg-neutral-600 hover:rounded-xl'>X</p>
-                            <p className='mt-[250px] text-xl'>{about?.Title || 'No plot available'}</p>
-                            <section className='flex gap-1 '>
-                                <p className='p-2 bg-neutral-700 rounded-lg'>{about?.Year}</p>
-                                <p className='p-2 bg-neutral-700'>{about?.Genre}</p>
-                                <p className='p-2 bg-neutral-700'>{about?.Rated}</p>
-                                <p className='p-2 bg-neutral-700'>{}</p>
-                                
-                            </section>
-                            <p className='mt-6'>{}</p>
-                            <button className=' flex items-center max-w-[200px] p-3 mt-6 mb-5 bg-red-700 rounded-sm'><Link href={'./components/Presignup'}>Get Started</Link>
-                                <Image src={Next} width={20} height={20} alt='' className='text-white stroke-current ml-1  float-right'/>
-                            </button>
-                            </div>
-                        
-                            
-                            </div>
-                            </div>
-                        
+              </div>
+            </SwiperSlide>
+          ))}
+
+        {loading && (
+          <div className="flex justify-between gap-[20px] ml-10 mb-7 overflow-auto">
+            {Numnum.map((value, index) => (
+              <div
+                key={index}
+                className="min-w-[130px] h-[170px] bg-neutral-400 rounded-md"
+              ></div>
+            ))}
+          </div>
+        )}
+      </Swiper>
+
+      {isClicked && active && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50">
+          <div className="bg-neutral-800 border border-white p-6 rounded-xl max-w-xl text-white relative">
+            <button
+              className="absolute top-3 right-3 text-xl hover:bg-neutral-600 rounded-full p-1"
+              onClick={() => setIsClicked(false)}
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-bold mb-4">{active.title}</h2>
+            <p className="mb-4">{active.overview || 'No plot available'}</p>
+            <p className="text-sm text-gray-400 mb-4">
+              Release Date: {active.release_date}
+            </p>
+            <Link href="/components/Presignup" className="inline-block">
+              <button className="flex items-center gap-2 bg-red-700 px-4 py-2 rounded hover:bg-red-600 transition">
+                Get Started
+                <Image src={NextIcon} width={20} height={20} alt="next" />
+              </button>
+            </Link>
+          </div>
+        </div>
+      )}
     </main>
   )
 }
