@@ -58,7 +58,7 @@ const Signup = () => {
           <div>
             <p className='text-sm mt-7'>STEP 1 OF 3</p>
             <p className='text-3xl text-neutral-700 font-bold max-w-[450px]'>Create a password to start your membership</p>
-            <p className='text-xl  mt-4 max-w-[450px]'>Just a few more steps and you're done!
+            <p className='text-xl  mt-4 max-w-[450px]'>Just a few more steps and you&apos;re done!
               We hate paperwork, too.</p>
             <form onSubmit={(e) => handleSignUp(e)}>
               <input

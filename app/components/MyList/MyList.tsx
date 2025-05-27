@@ -1,7 +1,5 @@
 'use client'
-
 import { useEffect, useState } from 'react'
-import { useParams } from 'next/navigation'
 import {  db, auth } from '@/app/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import { getDocs, collection, where, query} from 'firebase/firestore'
@@ -43,8 +41,7 @@ async function getUserMovieList(userId: string) {
 const  MyList = () => {
   const [id, setId] = useState<string | null>("")
   const [list, setList] = useState<Movie[]>()
-  const params = useParams()
-
+ 
 
 
   useEffect(() =>{

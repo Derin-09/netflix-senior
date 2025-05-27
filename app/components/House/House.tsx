@@ -1,20 +1,13 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import Background from '@/public/images/beautiful-selective-focus-shot-crystal-ball-reflecting-breathtaking-sunset.jpg'
 import Logo from '@/public/images/netflix.svg'
 import Next from '@/public/images/next.svg'
 import Link from 'next/link'
-import LoadingPage from '../LoadingPage/LoadingPage'
 
 const Home = () => {
-    const[load, setLoad] = useState<boolean>(false)
-
-    const handleLoad = () => {
-        if (load === true) {
-            <LoadingPage/>
-        }
-    }
+   
     return (
         <main>
             
@@ -42,7 +35,7 @@ const Home = () => {
                         bg-black opacity-70'/>
                                     <button 
                                     className='w-64 flex items-center max-w-[200px] px-[2em]  bg-red-700 rounded-md'
-                                    onClick={handleLoad}><Link href={'./Presignup'}>Get Started</Link>
+                                    ><Link href={'./Presignup'}>Get Started</Link>
                                         <Image src={Next} width={20} height={20} alt='' className='text-white stroke-current ml-1  float-right' />
                                     </button>
                                 </form>
