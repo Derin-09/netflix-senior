@@ -1,7 +1,6 @@
 'use client'
-import React, { act } from 'react'
+import React from 'react'
 import Image from 'next/image'
-import Backdrop from '@/public/images/background.avif'
 import NextIcon from '@/public/images/next.svg'
 import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -55,7 +54,7 @@ const createUserList = async (id: string | null | undefined, movie: Movie) => {
     }
 };
 
-async function getUserMovieList(userId: string) {
+/*async function getUserMovieList(userId: string) {
     try {
         if (!userId) throw new Error("User ID is missing");
 
@@ -78,7 +77,7 @@ async function getUserMovieList(userId: string) {
         return []; // return empty array if there was an error
     }
 }
-
+*/
 
 type Movie = {
     id: number
@@ -98,9 +97,7 @@ const Firstpage = () => {
     const [loading, setLoading] = useState<boolean>(true)
     const [isClicked, setIsClicked] = useState<boolean>(false)
     const [active, setActive] = useState<Movie | null>(null)
-    const [selected, setSelected] = useState<boolean>(false)
     const [email, setEmail] = useState<string | null | undefined>("")
-    const [userId, setUserId] = useState("")
     const [load, setLoad] = useState(true)
     const router = useRouter()
 
@@ -153,17 +150,7 @@ const Firstpage = () => {
         movie.genre_ids.includes(28)
     )
 
-    const filteredFantasy = movies.filter((movie: Movie) =>
-        movie.genre_ids.includes(14)
-    )
-
-    const filteredSci = movies.filter((movie: Movie) =>
-        movie.genre_ids.includes(878)
-    )
-
-    const filteredRomance = movies.filter((movie: Movie) =>
-        movie.genre_ids.includes(10749)
-    )
+    
 
     const handleClick = (movie: Movie) => {
         setActive(movie)
@@ -202,8 +189,8 @@ const Firstpage = () => {
                     loop
                     className=" overflow-hidden shadow-xl"
                 >
-                    {!loading && movies.map((movie) => (
-                        <section>
+                    {!loading && movies.map((movie, index) => (
+                        <section key={index}>
 
                             <SwiperSlide key={movie.id} className=''>
                                 <Link href={`/components/${movie.id}`}>

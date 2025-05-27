@@ -10,12 +10,12 @@ import { auth } from '@/app/firebase'
 
 
 const Successful = () => {
-    const [email, useEmail] = useState<string | null>("")
+    const [email, setEmail] = useState<string | null>("")
 
     useEffect(() =>{
         onAuthStateChanged(auth, (user) =>{
             if(user) {
-                useEmail(user.email)
+                setEmail(user.email)
             } else{
                 console.log("uususu");
                 

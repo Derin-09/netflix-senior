@@ -70,19 +70,20 @@ const Trending = () => {
         slidesPerView={6}
         loop
         breakpoints={{
-          640: { slidesPerView: 2 },
+          300: { slidesPerView: 3},
+          640: { slidesPerView: 4 },
           768: { slidesPerView: 6 },
-          1024: { slidesPerView: 5 },
+          1024: { slidesPerView: 8 },
         }}
 
-        className="rounded-2xl overflow-hidden shadow-xl"
+        className="rounded-2xl overflow-hidden shadow-xl ml-10 pl-10"
       >
         {!loading &&
           movies.map((movie) => (
             <SwiperSlide key={movie.id}>
               <div
                 onClick={() => handleClick(movie)}
-                className="min-w-[130px] h-[170px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
+                className="min-w-[130px] h-[170px] rounded-md mb-7 ml-10 bg-cover bg-center cursor-pointer shadow-md relative"
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                 }}

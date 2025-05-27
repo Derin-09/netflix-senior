@@ -1,11 +1,11 @@
 'use client'
-import React, { act } from 'react'
+import React from 'react'
 import Image from 'next/image'
 // import Backdrop from '@/public/images/background.avif'
 import NextIcon from '@/public/images/next.svg'
 import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -60,10 +60,6 @@ const Adventure = () => {
 
         fetchDetails()
     }, [])
-
-    //const filteredAdventure = movies.filter((movie: Movie) =>
-    //  movie.genre_ids.includes(12)
-    //)
 
     const handleClick = (movie: Movie) => {
         setActive(movie)

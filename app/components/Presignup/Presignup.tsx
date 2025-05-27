@@ -6,7 +6,7 @@ import Logo from '@/public/images/netflix.svg'
 
 const Presignup = () => {
   return (
-    <main className='bg-white '>
+    <main className='bg-white h-screen'>
         <div className='flex justify-between items-start w-full '>
                 <Image src={Logo} width={90} height={40} alt='logo' className='flex-[3fr] ml-8'/>
                 <Link href={'./Signin'}>

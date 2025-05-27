@@ -9,9 +9,9 @@ html, body {
   align-items: center;
   justify-content: center;
   background-color: rgb(217, 216, 216);
-  width: 100vw;                                                                                                                                                                      
+  width: 100vw;                                                                           
   height: 100vh;
-  border: 1px solid red;
+  min-width: 100%;
   }
   
   .loader {

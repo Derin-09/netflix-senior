@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import {  db, auth } from '@/app/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
-import { getDocs, collection, where, query, addDoc } from 'firebase/firestore'
-import Movie from '../Movie'
+import { getDocs, collection, where, query} from 'firebase/firestore'
 import Link from 'next/link'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
@@ -23,31 +22,29 @@ async function getUserMovieList(userId: string) {
     try {
       if (!userId) throw new Error("User ID is missing");
   
-      // 1. Create a query: Get all movies where userId matches
+
       const q = query(collection(db, "list"), where("userId", "==", userId));
       const snapshot = await getDocs(q);
   
-      // 2. Map the documents to movie objects
       const movies = snapshot.docs.map(doc => {
         const data = doc.data();
         return {
-          id: doc.id, // this is the Firestore document ID, not the movie ID
-          ...data.movie, // spread the movie object saved inside
+          id: doc.id, 
+          ...data.movie,
         };
       });
   
-      return movies; // returns Movie[]
+      return movies; 
     } catch (error) {
       console.error("Error fetching user movie list:", error);
-      return []; // return empty array if there was an error
+      return [];
     }
   }
 const  MyList = () => {
-  const [movieData, setMovieData] = useState<Movie | null>(null)
   const [id, setId] = useState<string | null>("")
   const [list, setList] = useState<Movie[]>()
   const params = useParams()
-  const movieId = params.movie as string
+
 
 
   useEffect(() =>{

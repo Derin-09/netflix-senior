@@ -1,11 +1,10 @@
 'use client'
-import React, { act } from 'react'
+import React from 'react'
 import Image from 'next/image'
-import Backdrop from '@/public/images/background.avif'
 import NextIcon from '@/public/images/next.svg'
 import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -13,9 +12,7 @@ import { useState, useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, db } from '@/app/firebase'
 import { getDocs, collection, where, query, addDoc } from 'firebase/firestore'
-import { useRouter } from 'next/navigation'
-import { signOut } from 'firebase/auth'
-import LoadingPage from '../LoadingPage/LoadingPage'
+
 
 type Movie = {
     id: number
@@ -27,48 +24,98 @@ type Movie = {
     genre_ids: number[]
 }
 
+const createUserList = async (id: string | null | undefined, movie: Movie) => {
+    try {
+        if (!id) throw new Error("User ID is missing");
+        if (!movie || !movie.id) throw new Error("Movie data is incomplete");
 
-const Adventure = () => {
+        // 1. First get all movies for this user
+        const q = query(collection(db, "list"), where("userId", "==", id));
+        const snapshot = await getDocs(q);
+
+        // 2. Check if the movie already exists
+        const movieAlreadyExists = snapshot.docs.some(doc => {
+            const data = doc.data();
+            return data.movie?.id === movie.id;
+        });
+
+        if (movieAlreadyExists) {
+            alert("Movie already in your list!");
+            return;
+        }
+
+        // 3. If not, add the movie
+        const docRef = await addDoc(collection(db, "list"), {
+            userId: id,
+            movie
+        });
+
+        console.log("Document written with ID:", docRef.id);
+        alert("Success!");
+    } catch (err) {
+        console.error("Error adding document:", err);
+    }
+};
+
+
+const Fantasy = () => {
     const [movies, setMovies] = useState<Movie[]>([])
     const [loading, setLoading] = useState<boolean>(true)
     const [isClicked, setIsClicked] = useState<boolean>(false)
     const [active, setActive] = useState<Movie | null>(null)
+    const [email, setEmail] = useState<string | null | undefined>("")
 
-     useEffect(() => {
-            const fetchDetails = async () => {
-                const options = {
-                    method: 'GET',
-                    headers: {
-                        accept: 'application/json',
-                        Authorization:
-                            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZTNiNzMxODQzZjgyYTI5ZTBkZjZhODlmOTkzMjlkNCIsIm5iZiI6MTc0NDI5NTM0Ny43MDEsInN1YiI6IjY3ZjdkNWIzZDNhYjdkN2E4YmFkNTJjMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2gPACKRazm9HtNi8UeezxgYRzoCl18zXvmShmVGR4jw',
-                    },
-                }
-    
-                try {
-                    const res = await fetch(
-                        'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=14',
-                        options
-                    )
-                    const data = await res.json()
-                    setMovies(data.results)
-                    setLoading(false)
-                } catch (err) {
-                    console.error(err)
-                }
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            setEmail(user?.email)
+        })
+    })
+
+    useEffect(() => {
+        const fetchDetails = async () => {
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization:
+                        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZTNiNzMxODQzZjgyYTI5ZTBkZjZhODlmOTkzMjlkNCIsIm5iZiI6MTc0NDI5NTM0Ny43MDEsInN1YiI6IjY3ZjdkNWIzZDNhYjdkN2E4YmFkNTJjMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2gPACKRazm9HtNi8UeezxgYRzoCl18zXvmShmVGR4jw',
+                },
             }
-    
-            fetchDetails()
-        }, [])
+
+            try {
+                const res = await fetch(
+                    'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=14',
+                    options
+                )
+                const data = await res.json()
+                setMovies(data.results)
+                setLoading(false)
+            } catch (err) {
+                console.error(err)
+            }
+        }
+
+        fetchDetails()
+    }, [])
 
     //const filteredAdventure = movies.filter((movie: Movie) =>
-      //  movie.genre_ids.includes(12)
+    //  movie.genre_ids.includes(12)
     //)
 
     const handleClick = (movie: Movie) => {
         setActive(movie)
         setIsClicked(true)
     }
+
+    const handleButtonClick = (id: string, movie: Movie) => {
+        createUserList(id, movie).then(() => {
+            console.log("done");
+
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
     return (
         <main >
             <section>
@@ -125,12 +172,18 @@ const Adventure = () => {
                             <p className="text-sm text-gray-400 mb-4">
                                 Release Date: {active.release_date}
                             </p>
+                            <button onClick={() => {
+                                if (email) {
+
+                                    handleButtonClick(email, active)
+                                }
+                            }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to Favourites</button>
                             <Link
                                 href={`/components/${movie.id}`}
                                 key={movie.id}
                                 className="inline-block">
                                 <button className="flex items-center gap-2 bg-red-700 px-4 py-2 rounded hover:bg-red-600 transition">
-                                    Watch Now na
+                                    Watch Now
                                     <Image src={NextIcon} width={20} height={20} alt="next" />
                                 </button>
                             </Link>
@@ -142,4 +195,4 @@ const Adventure = () => {
     )
 }
 
-export default Adventure
+export default Fantasy

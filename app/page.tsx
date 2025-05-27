@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Movie from "./components/Movie";
 import House from "./components/House/House";
 import Trending from "./components/Trending/Trending";
 import More from "./components/More/More";

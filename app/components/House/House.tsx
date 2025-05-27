@@ -1,14 +1,23 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Background from '@/public/images/beautiful-selective-focus-shot-crystal-ball-reflecting-breathtaking-sunset.jpg'
 import Logo from '@/public/images/netflix.svg'
 import Next from '@/public/images/next.svg'
 import Link from 'next/link'
+import LoadingPage from '../LoadingPage/LoadingPage'
 
 const Home = () => {
+    const[load, setLoad] = useState<boolean>(false)
 
+    const handleLoad = () => {
+        if (load === true) {
+            <LoadingPage/>
+        }
+    }
     return (
         <main>
+            
             <section className=' relative'>
                 <div className='relative pt-0 '>
                     <div className=''>
@@ -31,7 +40,9 @@ const Home = () => {
                                 <form className='flex gap-[10px] mt-4 w-full'>
                                     <input type='email' placeholder='Email Address' className='w-[100%] p-3 rounded-sm text-white border-white border-1
                         bg-black opacity-70'/>
-                                    <button className='w-64 flex items-center max-w-[200px] px-[2em]  bg-red-700 rounded-md'><Link href={'./components/Presignup'}>Get Started</Link>
+                                    <button 
+                                    className='w-64 flex items-center max-w-[200px] px-[2em]  bg-red-700 rounded-md'
+                                    onClick={handleLoad}><Link href={'./Presignup'}>Get Started</Link>
                                         <Image src={Next} width={20} height={20} alt='' className='text-white stroke-current ml-1  float-right' />
                                     </button>
                                 </form>
