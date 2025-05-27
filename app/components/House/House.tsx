@@ -35,7 +35,7 @@ const Home = () => {
                         bg-black opacity-70'/>
                                     <button 
                                     className='w-64 flex items-center max-w-[200px] px-[2em]  bg-red-700 rounded-md'
-                                    ><Link href={'./Presignup'}>Get Started</Link>
+                                    ><Link href={'/components/Presignup'}>Get Started</Link>
                                         <Image src={Next} width={20} height={20} alt='' className='text-white stroke-current ml-1  float-right' />
                                     </button>
                                 </form>
