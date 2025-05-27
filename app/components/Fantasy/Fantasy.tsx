@@ -175,7 +175,7 @@ const Fantasy = () => {
                                 }
                             }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to Favourites</button>
                             <Link
-                                href={`/components/${movie.id}`}
+                                href={`/components/${active.id}`}
                                 key={movie.id}
                                 className="inline-block">
                                 <button className="flex items-center gap-2 bg-red-700 px-4 py-2 rounded hover:bg-red-600 transition">

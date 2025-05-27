@@ -56,7 +56,7 @@ const Signup = () => {
         <hr className='h-[0.5px] bg-neutral-700' />
         <section className='flex justify-center text-black bg-white'>
           <div className='w-[70%]'>
-            <p className='text-sm mt-7'>STEP 1 OF 3</p>
+            <p className='text-sm mt-7'>STEP 2 OF 3</p>
             <p className='text-3xl text-neutral-700 max-[480]:text-xl  font-bold max-w-[450px]'>Create a password to start your membership</p>
             <p className='text-xl  mt-4 max-w-[450px]'>Just a few more steps and you&apos;re done!
               We hate paperwork, too.</p>

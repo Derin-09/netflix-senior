@@ -29,16 +29,16 @@ const Successful = () => {
                 <button className='py-1.5 px-4 bg-red-700 text-white text- rounded-md flex-[1fr] float-end mr-8 mt-7 mb-9'>Sign in</button>
         </div>
         <hr className='h-[0.5px] bg-neutral-700'/>
-        <div className={`flex justify-center text-black `}>
+        <div className={`flex justify-center text-black bg-white h-screen`}>
             <div>
                 <Image src={Sign} width={200} height={200} alt='devices' className='mb-[20px] m-auto'/>
-                <p className='text-sm text-center '>STEP 1 OF 3</p>
+                <p className='text-sm text-center '>STEP 3 OF 3</p>
                 <p className='text-4xl text-neutral-700 font-bold max-w-[350px]'>Account Created</p>
                 <p className='text-xl  mt-7 max-w-[350px]'>Use this email to access your account:</p>
                 <p>{email ? email : "nothing"}</p>
                 <Link 
                 href={'./Signin'}>
-                <button className='text-2xl font-bold  text-center mt-7 py-5 px-5 bg-red-600 rounded-md  w-[350px] text-white mb-5 hover:cursor-pointer hover:bg-red-700'>Next</button></Link>
+                <button className='text-2xl font-bold  text-center mt-7 py-5 px-5 bg-red-600 rounded-md  w-[350px] text-white mb-5 hover:cursor-pointer hover:bg-red-700 '>Next</button></Link>
             </div>
         </div>
             
