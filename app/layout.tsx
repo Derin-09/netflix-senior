@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Loader from './components/Loader'
 
 /*const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Netflix-Inspired",
   description: "Find all the trendy movies and shows here",
+  icons: {
+    icon: './favicon.ico', 
+  },
 };
 
 export default function RootLayout({
@@ -23,13 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <title>My Netflix Style</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>My netflix style</title>
       <body
         //className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className="w-screen"
       >
+        <Loader>
         {children}
+        </Loader>
       </body>
     </html>
   );

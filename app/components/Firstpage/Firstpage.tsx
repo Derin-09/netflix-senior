@@ -54,31 +54,6 @@ const createUserList = async (id: string | null | undefined, movie: Movie) => {
     }
 };
 
-/*async function getUserMovieList(userId: string) {
-    try {
-        if (!userId) throw new Error("User ID is missing");
-
-        // 1. Create a query: Get all movies where userId matches
-        const q = query(collection(db, "list"), where("userId", "==", userId));
-        const snapshot = await getDocs(q);
-
-        // 2. Map the documents to movie objects
-        const movies = snapshot.docs.map(doc => {
-            const data = doc.data();
-            return {
-                id: doc.id, // this is the Firestore document ID, not the movie ID
-                ...data.movie, // spread the movie object saved inside
-            };
-        });
-
-        return movies; // returns Movie[]
-    } catch (error) {
-        console.error("Error fetching user movie list:", error);
-        return []; // return empty array if there was an error
-    }
-}
-*/
-
 type Movie = {
     id: number
     title: string
@@ -100,8 +75,6 @@ const Firstpage = () => {
     const [email, setEmail] = useState<string | null | undefined>("")
     const [load, setLoad] = useState(true)
     const router = useRouter()
-
-    // const [user, setUse]
 
     const Numnum = ['1', '2', '3', '4', '5', '6']
 
@@ -248,7 +221,8 @@ const Firstpage = () => {
                             slidesPerView={6}
                             loop
                             breakpoints={{
-                                640: { slidesPerView: 2 },
+                                300: { slidesPerView: 3},
+                                640: { slidesPerView: 4 },
                                 768: { slidesPerView: 6 },
                                 1024: { slidesPerView: 5 },
                             }}
@@ -259,7 +233,7 @@ const Firstpage = () => {
                                     <SwiperSlide key={movie.id}>
                                         <div
                                             onClick={() => handleClick(movie)}
-                                            className="min-w-[130px] h-[170px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
+                                            className="min-w-[100px] h-[170px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
                                             style={{
                                                 backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                                             }}
@@ -282,37 +256,6 @@ const Firstpage = () => {
                                 </div>
                             )}
                         </Swiper>
-
-                        {/* {isClicked && active && (
-                            <div className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50">
-                                s;dkcnwelfnqeifhqeiojfiqejfqwpiofj
-                                <div className="bg-neutral-800 border border-white p-6 rounded-xl max-w-xl text-white relative">
-                                    <button
-                                        className="absolute top-3 right-3 text-xl hover:bg-neutral-600 rounded-full p-1"
-                                        onClick={() => setIsClicked(false)}
-                                    >
-                                        ✕
-                                    </button>
-                                    <h2 className="text-2xl font-bold mb-4">{active.title}</h2>
-                                    <p className="mb-4">{active.overview || 'No plot available'}</p>
-                                    <p className="text-sm text-gray-400 mb-4">
-                                        Release Datae: {active.release_date}
-                                    </p>
-                                    { }
-                                    <div className='flex'>
-                                        <Link href="/components/Selected" className="inline-block">
-                                        <button onClick={() => createUserList(userId, active)} className='text-3xl text-red-600'>Add to Favourites</button>
-                                            <button className="flex items-center gap-2 bg-red-700 px-4 py-2 rounded hover:bg-red-600 transition">
-                                                Watch Now hhh
-                                                <Image src={NextIcon} width={20} height={20} alt="next" />
-                                            </button>
-                                        </Link>
-                                        
-                                    </div>
-                                   
-                                </div>
-                            </div>
-                        )} */}
                     </section>
 
                    <Fantasy/>
@@ -354,7 +297,7 @@ const Firstpage = () => {
                         )}
                     
                     </section>
-            <button onClick={() => signOut(auth)}>sign out</button>
+            <button onClick={() => signOut(auth)}><Link href={'./House'}>sign out</Link></button>
         </main>
     )
 }

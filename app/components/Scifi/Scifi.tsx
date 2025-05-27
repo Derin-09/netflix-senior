@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-// import Backdrop from '@/public/images/background.avif'
 import NextIcon from '@/public/images/next.svg'
 import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -10,12 +9,9 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { useState, useEffect } from 'react'
-// import { onAuthStateChanged } from 'firebase/auth'
-// import { auth, db } from '@/app/firebase'
-// import { getDocs, collection, where, query, addDoc } from 'firebase/firestore'
-// import { useRouter } from 'next/navigation'
-// import { signOut } from 'firebase/auth'
-// import LoadingPage from '../LoadingPage/LoadingPage'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth, db } from '@/app/firebase'
+import { getDocs, collection, where, query, addDoc } from 'firebase/firestore'
 
 type Movie = {
     id: number
@@ -27,12 +23,47 @@ type Movie = {
     genre_ids: number[]
 }
 
+const createUserList = async (id: string | null | undefined, movie: Movie) => {
+    try {
+        if (!id) throw new Error("User ID is missing");
+        if (!movie || !movie.id) throw new Error("Movie data is incomplete");
 
-const Adventure = () => {
+        const q = query(collection(db, "list"), where("userId", "==", id));
+        const snapshot = await getDocs(q);
+
+        const movieAlreadyExists = snapshot.docs.some(doc => {
+            const data = doc.data();
+            return data.movie?.id === movie.id;
+        });
+
+        if (movieAlreadyExists) {
+            alert("Movie already in your list!");
+            return;
+        }
+
+        const docRef = await addDoc(collection(db, "list"), {
+            userId: id,
+            movie
+        });
+
+        console.log("Document written with ID:", docRef.id);
+        alert("Success!");
+    } catch (err) {
+        console.error("Error adding document:", err);
+    }
+};
+const Scifi = () => {
     const [movies, setMovies] = useState<Movie[]>([])
     const [loading, setLoading] = useState<boolean>(true)
     const [isClicked, setIsClicked] = useState<boolean>(false)
     const [active, setActive] = useState<Movie | null>(null)
+    const [email, setEmail] = useState<string | null | undefined>("")
+
+     useEffect(() => {
+                onAuthStateChanged(auth, (user) => {
+                    setEmail(user?.email)
+                })
+            })
 
     useEffect(() => {
         const fetchDetails = async () => {
@@ -65,6 +96,14 @@ const Adventure = () => {
         setActive(movie)
         setIsClicked(true)
     }
+    const handleButtonClick = (id: string, movie: Movie) => {
+        createUserList(id, movie).then(() => {
+            console.log("done");
+
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
     return (
         <main >
             <section>
@@ -77,13 +116,13 @@ const Adventure = () => {
                     slidesPerView={6}
                     loop
                     breakpoints={{
-                        320: { slidesPerView: 2 },         // Mobile (small screens)
-                        480: { slidesPerView: 2 },         // Mobile (larger screens)
-                        640: { slidesPerView: 3 },         // Small tablet
-                        768: { slidesPerView: 6 },         // Tablet
-                        1024: { slidesPerView: 6 },        // Small desktop
-                        1280: { slidesPerView: 6 },        // Medium desktop
-                        1600: { slidesPerView: 8 },        // Large desktop
+                        320: { slidesPerView: 3 },         
+                        480: { slidesPerView: 3 },       
+                        640: { slidesPerView: 3 },       
+                        768: { slidesPerView: 6 },     
+                        1024: { slidesPerView: 6 }, 
+                        1280: { slidesPerView: 6 },       
+                        1600: { slidesPerView: 8 },        
                     }}
 
                     className="rounded-2xl overflow-hidden shadow-xl"
@@ -92,7 +131,7 @@ const Adventure = () => {
                         <SwiperSlide key={movie.id}>
                             <div
                                 onClick={() => handleClick(movie)}
-                                className="min-w-[130px] h-[170px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
+                                className="min-w-[100px] h-[170px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
                                 style={{
                                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                                 }}
@@ -123,6 +162,12 @@ const Adventure = () => {
                             <p className="text-sm text-gray-400 mb-4">
                                 Release Date: {active.release_date}
                             </p>
+                            <button onClick={() => {
+                                if (email) {
+
+                                    handleButtonClick(email, active)
+                                }
+                            }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to Favourites</button>
                             <Link
                                 href={`/components/${movie.id}`}
                                 key={movie.id}
@@ -140,4 +185,4 @@ const Adventure = () => {
     )
 }
 
-export default Adventure
+export default Scifi

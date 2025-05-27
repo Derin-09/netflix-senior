@@ -125,8 +125,8 @@ const Adventure = () => {
                     slidesPerView={6}
                     loop
                     breakpoints={{
-                        320: { slidesPerView: 4, },        
-                        480: { slidesPerView: 4, },      
+                        320: { slidesPerView: 3, },        
+                        480: { slidesPerView: 3, },      
                         640: { slidesPerView: 3 },         
                         768: { slidesPerView: 6 },        
                         1024: { slidesPerView: 6 },        
@@ -140,7 +140,7 @@ const Adventure = () => {
                         <SwiperSlide key={movie.id}>
                             <div
                                 onClick={() => handleClick(movie)}
-                                className="min-w-[70px] h-[110px]  rounded-md mb-7 bg-cover bg-gray-300 bg-center cursor-pointer shadow-md relative"
+                                className="min-w-[100px] h-[170px]  rounded-md mb-7 bg-cover bg-gray-300 bg-center cursor-pointer shadow-md relative"
 
                                 style={{
                                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,

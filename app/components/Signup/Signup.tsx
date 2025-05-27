@@ -44,7 +44,7 @@ const Signup = () => {
   };
 
   return (
-    <main className='bg-white '>
+    <main className='bg-white h-screen'>
       <section >
         <div className='flex justify-between items-start w-full '>
           <Image src={Logo} width={90} height={40} alt='logo' className='flex-[3fr] ml-8' />
@@ -54,10 +54,10 @@ const Signup = () => {
 
         </div>
         <hr className='h-[0.5px] bg-neutral-700' />
-        <section className='flex justify-center text-black'>
-          <div>
+        <section className='flex justify-center text-black bg-white'>
+          <div className='w-[70%]'>
             <p className='text-sm mt-7'>STEP 1 OF 3</p>
-            <p className='text-3xl text-neutral-700 font-bold max-w-[450px]'>Create a password to start your membership</p>
+            <p className='text-3xl text-neutral-700 max-[480]:text-xl  font-bold max-w-[450px]'>Create a password to start your membership</p>
             <p className='text-xl  mt-4 max-w-[450px]'>Just a few more steps and you&apos;re done!
               We hate paperwork, too.</p>
             <form onSubmit={(e) => handleSignUp(e)}>
@@ -67,7 +67,7 @@ const Signup = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder='Enter your email address...'
                 required
-                className='w-[450px] my-3 border-1 p-5 rounded-sm'
+                className='w-full my-3 border-1 p-5 rounded-sm'
               /><br />
               <input
                 type='name'
@@ -75,7 +75,7 @@ const Signup = () => {
                 onChange={(e) => setName(e.target.value)}
                 placeholder='Enter your name...'
                 required
-                className='w-[450px] my-3 border-1 p-5 rounded-sm'
+                className='w-full mb-3 border-1 p-5 rounded-sm'
               /><br />
               <input
                 type='password'
@@ -83,9 +83,9 @@ const Signup = () => {
                 placeholder='Add a password'
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className='w-[450px] border-1 p-5 rounded-sm' /><br />
+                className='w-full border-1 p-5 rounded-sm' /><br />
               {error && <div>{error}</div>}
-              <button type='submit' className='text-2xl font-bold  text-center mt-7 py-5 px-5 bg-red-600 rounded-md  w-[450px] text-white mb-5 hover:cursor-pointer hover:bg-red-700'>Next</button>
+              <button type='submit' className='text-2xl font-bold  text-center mt-7 py-5 px-5 bg-red-600 rounded-md  w-full text-white mb-5 hover:cursor-pointer hover:bg-red-700 '>Next</button>
             </form>
           </div>
         </section>

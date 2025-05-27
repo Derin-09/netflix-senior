@@ -18,8 +18,7 @@ const Signin = () => {
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
-  
+    setError('')
     
     try {
       if(email === "" || password === ""){

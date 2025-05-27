@@ -128,8 +128,8 @@ const Fantasy = () => {
                     slidesPerView={6}
                     loop
                     breakpoints={{
-                        320: { slidesPerView: 2 },         // Mobile (small screens)
-                        480: { slidesPerView: 2 },         // Mobile (larger screens)
+                        320: { slidesPerView: 3},         // Mobile (small screens)
+                        480: { slidesPerView: 3 },         // Mobile (larger screens)
                         640: { slidesPerView: 3 },         // Small tablet
                         768: { slidesPerView: 6 },         // Tablet
                         1024: { slidesPerView: 6 },        // Small desktop
@@ -143,7 +143,7 @@ const Fantasy = () => {
                         <SwiperSlide key={movie.id}>
                             <div
                                 onClick={() => handleClick(movie)}
-                                className="min-w-[130px] h-[170px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
+                                className="min-w-[100px] h-[170px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
                                 style={{
                                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                                 }}
