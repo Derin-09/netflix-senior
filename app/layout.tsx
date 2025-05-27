@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Loader from './components/Loader'
+import { Suspense } from 'react';
+import { NavigationLoader } from './components/NavigationLoader';
 
 /*const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,9 +34,11 @@ export default function RootLayout({
         //className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className="w-screen"
       >
-        <Loader>
+        <Suspense fallback={null}>
+          <NavigationLoader />
+        </Suspense>
         {children}
-        </Loader>
+      
       </body>
     </html>
   );

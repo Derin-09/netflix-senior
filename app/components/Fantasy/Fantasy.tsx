@@ -98,9 +98,6 @@ const Fantasy = () => {
         fetchDetails()
     }, [])
 
-    //const filteredAdventure = movies.filter((movie: Movie) =>
-    //  movie.genre_ids.includes(12)
-    //)
 
     const handleClick = (movie: Movie) => {
         setActive(movie)
@@ -174,7 +171,6 @@ const Fantasy = () => {
                             </p>
                             <button onClick={() => {
                                 if (email) {
-
                                     handleButtonClick(email, active)
                                 }
                             }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to Favourites</button>

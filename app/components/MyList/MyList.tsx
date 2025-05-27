@@ -6,6 +6,9 @@ import { getDocs, collection, where, query} from 'firebase/firestore'
 import Link from 'next/link'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
+
+
+
 type Movie = {
   id: number
   title: string
@@ -15,6 +18,7 @@ type Movie = {
   backdrop_path: string
   genres: { id: number; name: string }[]
 }
+
 
 async function getUserMovieList(userId: string) {
     try {
@@ -38,6 +42,10 @@ async function getUserMovieList(userId: string) {
       return [];
     }
   }
+
+  
+  
+
 const  MyList = () => {
   const [id, setId] = useState<string | null>("")
   const [list, setList] = useState<Movie[]>()

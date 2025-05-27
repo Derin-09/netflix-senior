@@ -2,7 +2,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
-import LoadingPage from './LoadingPage/LoadingPage';
+import LoadingPage from './components/LoadingPage/LoadingPage';
 
 export function Loader({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(false);
