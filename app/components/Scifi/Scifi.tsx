@@ -116,8 +116,8 @@ const Scifi = () => {
                     slidesPerView={6}
                     loop
                     breakpoints={{
-                        320: { slidesPerView: 4 },
-                        414: { slidesPerView: 4 },
+                        320: { slidesPerView: 3 },
+                        414: { slidesPerView: 3 },
                         480: { slidesPerView: 3 },
                         640: { slidesPerView: 3 },
                         768: { slidesPerView: 6 },
@@ -126,7 +126,7 @@ const Scifi = () => {
                         1600: { slidesPerView: 8 },
                     }}
 
-                    className="rounded-2xl overflow-hidden shadow-xl"
+                    className=" overflow-hidden shadow-xl"
                 >
                     {!loading && movies.map((movie) => (
                         <SwiperSlide key={movie.id}>

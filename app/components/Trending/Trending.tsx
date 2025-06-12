@@ -74,12 +74,13 @@ const Trending = () => {
           414: { slidesPerView: 4},
           640: { slidesPerView: 4 },
           768: { slidesPerView: 4 },
-          1024: { slidesPerView: 6 },
-          1280: { slidesPerView: 6 },
+          1024: { slidesPerView: 7 },
+          1280: { slidesPerView: 7 },
           1600: { slidesPerView: 8 },
         }}
 
-        className="rounded-2xl overflow-hidden shadow-xl ml-10 pl-10"
+        className="rounded-2xl overflow-hidden shadow-xl ml-10 pl-10 pr-10"
+          
       >
         {!loading &&
           movies.map((movie) => (

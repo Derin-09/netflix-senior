@@ -149,13 +149,13 @@ const Firstpage = () => {
         <main className='text-white '>
             <section className=''>
                 <Swiper
-                    modules={[Navigation, Pagination, Autoplay]}
+                    modules={[ Pagination, Autoplay]}
                     autoplay={{
                         delay: 5000,
                         disableOnInteraction: false,
                     }}
                     pagination={{ clickable: true }}
-                    navigation
+                    //navigation
                     slidesPerView={1}
                     loop
                     className=" overflow-hidden shadow-xl"
@@ -174,7 +174,7 @@ const Firstpage = () => {
                                         }}
                                     >
 
-                                        <div className='top-[30%] left-5 md:left-10 absolute'>
+                                        <div className='md:top-[30%]  bottom-[10px]  left-5 md:left-10 absolute'>
                                             <div className='rounded-lg w-[150] h-[250]' style={{
                                                 backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${movie.poster_path})`,
                                                 backgroundSize: "cover",
@@ -182,7 +182,7 @@ const Firstpage = () => {
                                             }} ></div>
                                             <div className='w-[300px] md:w-[700px]'>
                                                 <p className='text-3xl md:text-5xl md:mb-4 font-bold'>{movie.title}</p>
-                                                <p className='md:text-2xl'>{movie.overview}</p>
+                                                <p className='md:text-2xl line-clamp-3 md:line-clamp-none md:top-0'>{movie.overview}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -208,7 +208,7 @@ const Firstpage = () => {
             </section>
 
             <hr className='border-1 text-white w-full' />
-            <section className=' pl-5 md:pl-10 z-20 bg-gradient-to-b from-blue-950 to-black'>
+            <section className=' pl-5 pr-5 md:pl-10 z-20 bg-gradient-to-b from-blue-950 to-black'>
                 <Adventure />
                 <section>
                     <p className='text-3xl font-bold pt-7 pb-3'>Action</p>
@@ -220,15 +220,15 @@ const Firstpage = () => {
                         slidesPerView={6}
                         loop
                         breakpoints={{
-                            300: { slidesPerView: 4 },
-                            414: { slidesPerView: 4 },
+                            300: { slidesPerView: 3},
+                            414: { slidesPerView: 3 },
                             640: { slidesPerView: 4 },
                             768: { slidesPerView: 6 },
                             1024: { slidesPerView: 6 },
                             1280: { slidesPerView: 6 },
                             1600: { slidesPerView: 8 },
                         }}
-                        className="rounded-2xl overflow-hidden shadow-xl"
+                        className=" overflow-hidden shadow-xl"
                     >
                         {!loading &&
                             filteredAction.map((movie) => (

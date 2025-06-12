@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Netflix-Inspired",
   description: "Find all the trendy movies and shows here",
   icons: {
-    icon: './favicon.ico', 
+    icon: '/favicon.ico', 
   },
 };
 

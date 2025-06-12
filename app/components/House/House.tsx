@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 const Home = () => {
     return (
-        <main className='select-none h-screen bg-cover bg-center bg-no-repeat' style={{ backgroundImage: "url('/images/beautiful-selective-focus-shot-crystal-ball-reflecting-breathtaking-sunset.jpg')" }}>
+        <main className='select-none h-screen bg-cover bg-center bg-no-repeat bg-black' style={{ backgroundImage: "url('/images/beautiful-selective-focus-shot-crystal-ball-reflecting-breathtaking-sunset.jpg')" }}>
             
             <section className=' relative ' >
                 <div className=''>
@@ -16,7 +16,7 @@ const Home = () => {
                             <Image src={Logo} width={90} height={40} alt='logo' className='flex-[3fr] ml-8' />
                             <Link href={'/components/Signin'}>
                                 <button
-                                    className='py-1.5 px-4 bg-red-700 text-white text- rounded-md flex-[1fr] float-end mr-8 mt-7 mb-9 hover:cursor-pointer'>
+                                    className='py-1.5 px-4 bg-red-700 text-white  rounded-md flex-[1fr] float-end mr-8 mt-7 mb-9 hover:cursor-pointer'>
                                     Sign in
                                 </button>
                             </Link>
