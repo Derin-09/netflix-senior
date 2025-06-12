@@ -174,7 +174,7 @@ const Firstpage = () => {
                                         }}
                                     >
 
-                                       <div className='top-[30%] left-5 md:left-10 absolute'>
+                                        <div className='top-[30%] left-5 md:left-10 absolute'>
                                             <div className='rounded-lg w-[150] h-[250]' style={{
                                                 backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${movie.poster_path})`,
                                                 backgroundSize: "cover",
@@ -221,10 +221,11 @@ const Firstpage = () => {
                         loop
                         breakpoints={{
                             300: { slidesPerView: 4 },
+                            414: { slidesPerView: 4 },
                             640: { slidesPerView: 4 },
                             768: { slidesPerView: 6 },
-                            1024: { slidesPerView: 6 },     
-                            1280: { slidesPerView: 6 },      
+                            1024: { slidesPerView: 6 },
+                            1280: { slidesPerView: 6 },
                             1600: { slidesPerView: 8 },
                         }}
                         className="rounded-2xl overflow-hidden shadow-xl"

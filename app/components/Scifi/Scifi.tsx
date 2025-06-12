@@ -117,6 +117,7 @@ const Scifi = () => {
                     loop
                     breakpoints={{
                         320: { slidesPerView: 4 },
+                        414: { slidesPerView: 4 },
                         480: { slidesPerView: 3 },
                         640: { slidesPerView: 3 },
                         768: { slidesPerView: 6 },

@@ -70,7 +70,8 @@ const Trending = () => {
         slidesPerView={6}
         loop
         breakpoints={{
-          300: { slidesPerView: 4 },
+          300: { slidesPerView: 3 },
+          414: { slidesPerView: 4},
           640: { slidesPerView: 4 },
           768: { slidesPerView: 4 },
           1024: { slidesPerView: 6 },
@@ -78,7 +79,7 @@ const Trending = () => {
           1600: { slidesPerView: 8 },
         }}
 
-        className="rounded-2xl overflow-hidden shadow-xl ml-10 pl-5 md:pl-10"
+        className="rounded-2xl overflow-hidden shadow-xl ml-10 pl-10"
       >
         {!loading &&
           movies.map((movie) => (
