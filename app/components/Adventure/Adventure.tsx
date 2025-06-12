@@ -23,38 +23,38 @@ type Movie = {
     genre_ids: number[]
 }
 
- const createUserList = async (id: string | null | undefined, movie: Movie) => {
-        try {
-            if (!id) throw new Error("User ID is missing");
-            if (!movie || !movie.id) throw new Error("Movie data is incomplete");
+const createUserList = async (id: string | null | undefined, movie: Movie) => {
+    try {
+        if (!id) throw new Error("User ID is missing");
+        if (!movie || !movie.id) throw new Error("Movie data is incomplete");
 
-            // 1. First get all movies for this user
-            const q = query(collection(db, "list"), where("userId", "==", id));
-            const snapshot = await getDocs(q);
+        // 1. First get all movies for this user
+        const q = query(collection(db, "list"), where("userId", "==", id));
+        const snapshot = await getDocs(q);
 
-            // 2. Check if the movie already exists
-            const movieAlreadyExists = snapshot.docs.some(doc => {
-                const data = doc.data();
-                return data.movie?.id === movie.id;
-            });
+        // 2. Check if the movie already exists
+        const movieAlreadyExists = snapshot.docs.some(doc => {
+            const data = doc.data();
+            return data.movie?.id === movie.id;
+        });
 
-            if (movieAlreadyExists) {
-                alert("Movie already in your list!");
-                return;
-            }
-
-            // 3. If not, add the movie
-            const docRef = await addDoc(collection(db, "list"), {
-                userId: id,
-                movie
-            });
-
-            console.log("Document written with ID:", docRef.id);
-            alert("Success!");
-        } catch (err) {
-            console.error("Error adding document:", err);
+        if (movieAlreadyExists) {
+            alert("Movie already in your list!");
+            return;
         }
-    };
+
+        // 3. If not, add the movie
+        const docRef = await addDoc(collection(db, "list"), {
+            userId: id,
+            movie
+        });
+
+        console.log("Document written with ID:", docRef.id);
+        alert("Success!");
+    } catch (err) {
+        console.error("Error adding document:", err);
+    }
+};
 
 const Adventure = () => {
     const [movies, setMovies] = useState<Movie[]>([])
@@ -63,12 +63,12 @@ const Adventure = () => {
     const [active, setActive] = useState<Movie | null>(null)
     const [email, setEmail] = useState<string | null | undefined>("")
 
-     useEffect(() => {
-            onAuthStateChanged(auth, (user) => {
-                setEmail(user?.email)
-            })
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            setEmail(user?.email)
         })
-   
+    })
+
 
     useEffect(() => {
         const fetchDetails = async () => {
@@ -125,13 +125,13 @@ const Adventure = () => {
                     slidesPerView={6}
                     loop
                     breakpoints={{
-                        320: { slidesPerView: 3, },        
-                        480: { slidesPerView: 3, },      
-                        640: { slidesPerView: 3 },         
-                        768: { slidesPerView: 6 },        
-                        1024: { slidesPerView: 6 },        
-                        1280: { slidesPerView: 6 },        
-                        1600: { slidesPerView: 8 },     
+                        320: { slidesPerView: 4, },
+                        480: { slidesPerView: 3, },
+                        640: { slidesPerView: 3 },
+                        768: { slidesPerView: 4 },
+                        1024: { slidesPerView: 6 },
+                        1280: { slidesPerView: 6 },
+                        1600: { slidesPerView: 8 },
                     }}
 
                     className="rounded-2xl overflow-hidden shadow-xl"
@@ -140,7 +140,7 @@ const Adventure = () => {
                         <SwiperSlide key={movie.id}>
                             <div
                                 onClick={() => handleClick(movie)}
-                                className="min-w-[100px] h-[170px]  rounded-md mb-7 bg-cover bg-gray-300 bg-center cursor-pointer shadow-md relative"
+                                className="min-w-[100px] h-[170px] md:h-[250px]  rounded-md mb-7 bg-cover bg-gray-300 bg-center cursor-pointer shadow-md relative"
 
                                 style={{
                                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,

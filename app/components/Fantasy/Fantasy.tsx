@@ -125,13 +125,13 @@ const Fantasy = () => {
                     slidesPerView={6}
                     loop
                     breakpoints={{
-                        320: { slidesPerView: 3},         // Mobile (small screens)
-                        480: { slidesPerView: 3 },         // Mobile (larger screens)
-                        640: { slidesPerView: 3 },         // Small tablet
-                        768: { slidesPerView: 6 },         // Tablet
-                        1024: { slidesPerView: 6 },        // Small desktop
-                        1280: { slidesPerView: 6 },        // Medium desktop
-                        1600: { slidesPerView: 8 },        // Large desktop
+                        320: { slidesPerView: 4 },        
+                        480: { slidesPerView: 3 },      
+                        640: { slidesPerView: 3 },       
+                        768: { slidesPerView: 6 },    
+                        1024: { slidesPerView: 6 },      
+                        1280: { slidesPerView: 6 },      
+                        1600: { slidesPerView: 8 },       
                     }}
 
                     className="rounded-2xl overflow-hidden shadow-xl"
@@ -140,7 +140,7 @@ const Fantasy = () => {
                         <SwiperSlide key={movie.id}>
                             <div
                                 onClick={() => handleClick(movie)}
-                                className="min-w-[100px] h-[170px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
+                                className="min-w-[100px] h-[170px] md:h-[250px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
                                 style={{
                                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                                 }}

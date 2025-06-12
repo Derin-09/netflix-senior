@@ -59,7 +59,7 @@ const Trending = () => {
   }
 
   return (
-    <main>
+    <main className='select-none'>
       <p className="font-bold pl-10 text-white text-xl mb-4">Trending Now</p>
 
       <Swiper
@@ -70,20 +70,22 @@ const Trending = () => {
         slidesPerView={6}
         loop
         breakpoints={{
-          300: { slidesPerView: 3},
+          300: { slidesPerView: 4 },
           640: { slidesPerView: 4 },
-          768: { slidesPerView: 6 },
-          1024: { slidesPerView: 8 },
+          768: { slidesPerView: 4 },
+          1024: { slidesPerView: 6 },
+          1280: { slidesPerView: 6 },
+          1600: { slidesPerView: 8 },
         }}
 
-        className="rounded-2xl overflow-hidden shadow-xl ml-10 pl-10"
+        className="rounded-2xl overflow-hidden shadow-xl ml-10 pl-5 md:pl-10"
       >
         {!loading &&
           movies.map((movie) => (
             <SwiperSlide key={movie.id}>
               <div
                 onClick={() => handleClick(movie)}
-                className="min-w-[130px] h-[170px] rounded-md mb-7 ml-10 bg-cover bg-center cursor-pointer shadow-md relative"
+                className="min-w-[170px] h-[250px] rounded-md mb-7 ml-10 bg-cover bg-center cursor-pointer shadow-md relative"
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                 }}

@@ -59,11 +59,11 @@ const Scifi = () => {
     const [active, setActive] = useState<Movie | null>(null)
     const [email, setEmail] = useState<string | null | undefined>("")
 
-     useEffect(() => {
-                onAuthStateChanged(auth, (user) => {
-                    setEmail(user?.email)
-                })
-            })
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            setEmail(user?.email)
+        })
+    })
 
     useEffect(() => {
         const fetchDetails = async () => {
@@ -116,13 +116,13 @@ const Scifi = () => {
                     slidesPerView={6}
                     loop
                     breakpoints={{
-                        320: { slidesPerView: 3 },         
-                        480: { slidesPerView: 3 },       
-                        640: { slidesPerView: 3 },       
-                        768: { slidesPerView: 6 },     
-                        1024: { slidesPerView: 6 }, 
-                        1280: { slidesPerView: 6 },       
-                        1600: { slidesPerView: 8 },        
+                        320: { slidesPerView: 4 },
+                        480: { slidesPerView: 3 },
+                        640: { slidesPerView: 3 },
+                        768: { slidesPerView: 6 },
+                        1024: { slidesPerView: 6 },
+                        1280: { slidesPerView: 6 },
+                        1600: { slidesPerView: 8 },
                     }}
 
                     className="rounded-2xl overflow-hidden shadow-xl"
@@ -131,7 +131,7 @@ const Scifi = () => {
                         <SwiperSlide key={movie.id}>
                             <div
                                 onClick={() => handleClick(movie)}
-                                className="min-w-[100px] h-[170px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
+                                className="min-w-[100px] h-[170px] md:h-[250px] rounded-md mb-7 bg-cover bg-center cursor-pointer shadow-md relative"
                                 style={{
                                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                                 }}

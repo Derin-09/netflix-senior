@@ -36,6 +36,7 @@ const Signup = () => {
         })
       })
       alert('User signed up successfully');
+
       router.push("./SuccessSignup")
     } catch (err) {
       //setError(err.message);  // Handle signup 
@@ -44,7 +45,7 @@ const Signup = () => {
   };
 
   return (
-    <main className='bg-white h-screen'>
+    <main className='bg-white h-screen '>
       <section >
         <div className='flex justify-between items-start w-full '>
           <Image src={Logo} width={90} height={40} alt='logo' className='flex-[3fr] ml-8' />
@@ -54,13 +55,13 @@ const Signup = () => {
 
         </div>
         <hr className='h-[0.5px] bg-neutral-700' />
-        <section className='flex justify-center text-black bg-white'>
-          <div className='w-[70%]'>
+        <section className='flex justify-center  text-black bg-white'>
+          <div className=' md:w-[45%] w-[80%]'>
             <p className='text-sm mt-7'>STEP 2 OF 3</p>
             <p className='text-3xl text-neutral-700 max-[480]:text-xl  font-bold max-w-[450px]'>Create a password to start your membership</p>
             <p className='text-xl  mt-4 max-w-[450px]'>Just a few more steps and you&apos;re done!
               We hate paperwork, too.</p>
-            <form onSubmit={(e) => handleSignUp(e)}>
+            <form onSubmit={(e) => handleSignUp(e)} className=''>
               <input
                 type='email'
                 value={email}
