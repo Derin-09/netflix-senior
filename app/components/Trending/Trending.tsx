@@ -79,7 +79,7 @@ const Trending = () => {
           1600: { slidesPerView: 8 },
         }}
 
-        className="rounded-2xl overflow-hidden shadow-xl ml-10 pl-10 pr-10"
+        className="overflow-hidden shadow-xl ml-10 pl-10 pr-10"
           
       >
         {!loading &&
