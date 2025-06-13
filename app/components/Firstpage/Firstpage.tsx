@@ -175,11 +175,11 @@ const Firstpage = () => {
                                     >
 
                                         <div className='md:top-[30%]  bottom-[10px]  left-5 md:left-10 absolute'>
-                                            <div className='rounded-lg w-[150] h-[250]' style={{
+                                            {/*<div className='rounded-lg w-[150] h-[250]' style={{
                                                 backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${movie.poster_path})`,
                                                 backgroundSize: "cover",
                                                 backgroundPosition: "center"
-                                            }} ></div>
+                                            }} ></div>*/}
                                             <div className='w-[300px] md:w-[700px]'>
                                                 <p className='text-3xl md:text-5xl md:mb-4 font-bold'>{movie.title}</p>
                                                 <p className='md:text-2xl line-clamp-3 md:line-clamp-none md:top-0'>{movie.overview}</p>
