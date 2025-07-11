@@ -7,26 +7,26 @@ const More = () => {
             <div >
                 <div className='bg-gradient-to-r from-blue-950 to-purple-950 rounded-2xl ml-9 mr-8 pl-5 pt-6 pb-36 mb-2  z-20 relative'>
                     <div className='z-30 absolute'>
-                        <p className='text-white font-bold text-xl pb-2'>Enjoy on your TV</p>
-                        <p className='text-gray-400'>Watch on Smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
+                        <p className='text-white font-bold text-xl pb-2'>Smart Recommendations</p>
+                        <p className='text-gray-400'>Built on real-time data from TMDB amd not just some guy&apos;s opinion.</p>
                     </div>
                 </div>
                 <div className='bg-gradient-to-r from-blue-950 to-purple-950 rounded-2xl ml-9 mr-8 pl-5 pt-6 pb-36 mb-2  z-20 relative'>
                     <div className='z-30 absolute'>
-                        <p className='text-white font-bold text-xl pb-2'>Download your shows to watch offline</p>
-                        <p className='text-gray-400'>Save your favorites easily and always have something to watch.</p>
+                        <p className='text-white font-bold text-xl pb-2'>Personalized Experience</p>
+                        <p className='text-gray-400'>Save favorites and build your own watchlist.</p>
                     </div>
                 </div>
                 <div className='bg-gradient-to-r from-blue-950 to-purple-950 rounded-2xl ml-9 mr-8 pl-5 pt-6 pb-36 mb-2  z-20 relative'>
                     <div className='z-30 absolute'>
-                        <p className='text-white font-bold text-xl pb-2'>Watch everywhere</p>
-                        <p className='text-gray-400'>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</p>
+                        <p className='text-white font-bold text-xl pb-2'>Constantly Updated Library</p>
+                        <p className='text-gray-400'>Trending movies updated daily.</p>
                     </div>
                 </div>
                 <div className='bg-gradient-to-r from-blue-950 to-purple-950 rounded-2xl ml-9 mr-8 pl-5 pt-6 pb-36 mb-2  z-20 relative'>
                     <div className='z-30 absolute'>
-                        <p className='text-white font-bold text-xl pb-2'>Create profiles for kids</p>
-                        <p className='text-gray-400'>Send kids on adventures with their favorite characters in a space made just for them — free with your membership.</p>
+                        <p className='text-white font-bold text-xl pb-2'>Thoughtfully Curated Picks</p>
+                        <p className='text-gray-400'>Every movie is chosen with purpose, no random filler.</p>
                     </div>
                 </div>
             </div>

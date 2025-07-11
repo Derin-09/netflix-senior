@@ -64,7 +64,7 @@ const Signin = () => {
               {error && <div>{error}</div>}
               <Link href={''}><p className='mt-3'>forgot password?</p></Link>
               <div className='flex gap-1.5'>
-                <p className='text-neutral-500 '>New to Netflix?</p>
+                <p className='text-neutral-500 '>New to MyNetflix?</p>
                 <span className='font-bold  hover:text-red-600'><Link href={'./Presignup'}> Sign up</Link></span>
               </div>
               <button type='submit' className='text-2xl font-bold  text-center mt-7 py-5 px-5 bg-red-600 rounded-md  w-full text-white mb-5 hover:cursor-pointer hover:bg-red-700'>Sign in</button>

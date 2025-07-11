@@ -8,10 +8,10 @@ const Footer = () => {
         <main>
             <section className='pt-17'>
                 <div className=' md:flex justify-center text-center'>
-                    <p>Ready to watch?</p>
+                    <p>Ready to join? </p>
                     <p> Enter your email to join or restart your membership.</p></div>
-                <form className='flex gap-[10px] mt-4  ml-10 mr-8'>
-                    <input placeholder='Email Address' className='w-[100%] p-3 rounded-sm text-white border-white border-1
+                <form className='flex gap-[10px] md:justify-center mt-4  ml-10 mr-8'>
+                    <input placeholder='Email Address' className='w-[100%] md:w-[30%] p-3 rounded-sm text-white border-white border-1
                         bg-black opacity-70'/>
                     <Link href={"./components/Presignup"}>
                         <button className='w-64 flex items-center gap-2 justify-center max-w-[200px] px-[2em]  bg-red-700 rounded-md'>

@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico', 
   },
+  viewport: 'width=device-width, initial-scale=1.0',
 };
 
 export default function RootLayout({
@@ -28,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>My netflix style</title>
       <body
         //className={`${geistSans.variable} ${geistMono.variable} antialiased`}

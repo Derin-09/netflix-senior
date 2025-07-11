@@ -25,12 +25,8 @@ const createUserList = async (id: string | null | undefined, movie: Movie) => {
     try {
         if (!id) throw new Error("User ID is missing");
         if (!movie || !movie.id) throw new Error("Movie data is incomplete");
-
-        // 1. First get all movies for this user
         const q = query(collection(db, "list"), where("userId", "==", id));
         const snapshot = await getDocs(q);
-
-        // 2. Check if the movie already exists
         const movieAlreadyExists = snapshot.docs.some(doc => {
             const data = doc.data();
             return data.movie?.id === movie.id;
@@ -40,8 +36,6 @@ const createUserList = async (id: string | null | undefined, movie: Movie) => {
             alert("Movie already in your list!");
             return;
         }
-
-        // 3. If not, add the movie
         const docRef = await addDoc(collection(db, "list"), {
             userId: id,
             movie
@@ -76,7 +70,7 @@ const Firstpage = () => {
     const [load, setLoad] = useState(true)
     const router = useRouter()
 
-    const Numnum = ['1', '2', '3', '4', '5', '6']
+    const Numnum = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 
     useEffect(() => {
@@ -149,7 +143,7 @@ const Firstpage = () => {
         <main className='text-white '>
             <section className=''>
                 <Swiper
-                    modules={[ Pagination, Autoplay]}
+                    modules={[Pagination, Autoplay]}
                     autoplay={{
                         delay: 5000,
                         disableOnInteraction: false,
@@ -166,7 +160,7 @@ const Firstpage = () => {
                             <SwiperSlide key={movie.id} className=''>
                                 <Link href={`/components/${movie.id}`}>
                                     <div
-                                        className="md:h-screen h-[320px] mb-0 bg-cover bg-center cursor-pointer shadow-md relative"
+                                        className="md:h-screen h-[320px] mb-0 bg-cover bg-center cursor-pointer shadow-md relative "
                                         style={{
                                             backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${movie.backdrop_path})`,
                                             backgroundSize: "cover",
@@ -193,7 +187,7 @@ const Firstpage = () => {
 
                     ))}
                 </Swiper>
-                <div className='absolute top-4 w-full justify-between px-6 font-bold  flex z-30'>
+                <div className='fixed max-w-[1180px] xl:max-w-[1460px] top-4 w-full justify-between px-6 font-bold flex z-30'>
                     <Link href="./MyList" className='hover:cursor-pointer p-3 py-2  rounded-tl-md rounded-br-md bg-red-600 right-4'>My List</Link>
                     <button onClick={() => signOut(auth)} className='hover:cursor-pointer p-3 py-2 rounded-tr-md rounded-bl-md bg-red-600'><Link href={'./House'}>Sign out</Link></button>
                 </div>
@@ -215,12 +209,12 @@ const Firstpage = () => {
                     <Swiper
                         modules={[Navigation, Pagination]}
                         pagination={{ clickable: true }}
-                        navigation
+                        //navigation
                         spaceBetween={30}
                         slidesPerView={6}
                         loop
                         breakpoints={{
-                            300: { slidesPerView: 3},
+                            300: { slidesPerView: 3 },
                             414: { slidesPerView: 3 },
                             640: { slidesPerView: 4 },
                             768: { slidesPerView: 6 },
@@ -265,34 +259,39 @@ const Firstpage = () => {
 
                 {isClicked && active && (
                     <div className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50">
-                        <div className="bg-neutral-800 border border-white p-6 rounded-xl max-w-xl text-white relative">
-                            <button
-                                className="absolute top-3 right-3 text-xl hover:bg-neutral-600 rounded-full p-1"
-                                onClick={() => setIsClicked(false)}
-                            >
-                                ✕
-                            </button>
-                            <h2 className="text-2xl font-bold mb-4">{active.title}</h2>
-                            <p className="mb-4">{active.overview || 'No plot available'}</p>
-                            <p className="text-sm text-gray-400 mb-4">
-                                Release Date: {active.release_date}
-                            </p>
-                            <div className='flex'>
+                        <div className="bg-neutral-800 border border-white rounded-xl max-w-xl text-white relative bg-cover bg-center"
+                            style={{
+                                backgroundImage: `url(https://image.tmdb.org/t/p/w500/${active.poster_path})`,
+                            }}>
+                            <div className='bg-black/40 p-6'>
+                                <button
+                                    className="absolute top-3 right-3 text-xl hover:bg-neutral-600 rounded-full p-1"
+                                    onClick={() => setIsClicked(false)}
+                                >
+                                    ✕
+                                </button>
+                                <h2 className="text-2xl font-bold mb-4">{active.title}</h2>
+                                <p className="mb-4">{active.overview || 'No plot available'}</p>
+                                <p className="text-sm text-gray-400 mb-4">
+                                    Release Date: {active.release_date}
+                                </p>
+                                <div className='flex'>
 
-                                <button onClick={() => {
-                                    if (email) {
+                                    <button onClick={() => {
+                                        if (email) {
 
-                                        handleButtonClick(email, active)
-                                    }
-                                }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to Favourites</button>
-                                <Link href={`/components/${active.id}`}>
-                                    <button className="flex items-center gap-2 bg-red-700 px-4 py-2 rounded hover:bg-red-600 transition">
-                                        Watch Now
-                                        <Image src={NextIcon} width={20} height={20} alt="next" />
-                                    </button>
-                                </Link>
+                                            handleButtonClick(email, active)
+                                        }
+                                    }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to My List</button>
+                                    <Link href={`/components/${active.id}`}>
+                                        <button className="flex items-center gap-2 bg-red-700 px-4 py-2 rounded hover:bg-red-600 transition">
+                                            See More
+                                            <Image src={NextIcon} width={20} height={20} alt="next" />
+                                        </button>
+                                    </Link>
 
 
+                                </div>
                             </div>
                         </div>
                     </div>

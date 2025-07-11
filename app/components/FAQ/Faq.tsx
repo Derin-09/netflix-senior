@@ -10,17 +10,17 @@ type Freq = {
 }
 
 const options: Freq[] = [
-    { id: 1, question: "What is Netflix?", answer: "Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!" },
+    { id: 1, question: "What is MyNetflix?", answer: "MyNetflix is a movie recommendation service that offers a wide variety of award-winning TV shows, movies, and more on thousands of internet-connected devices.Smart recommendations based on your mood, genre, or what's trending. No stress - just movies. There's always something new to discover and new TV shows and movies are added every week!" },
 
-    { id: 2, question: "How much does Netflix cost?", answer: "Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₦2,200 to ₦7,000 a month. No extra costs, no contracts." },
+    { id: 2, question: "How much does MyNetflix cost?", answer: " MyNetflix is completely free to use. Just sign up and start getting movie recommendations right away - no hidden charges, no premium traps." },
 
-    { id: 3, question: "Where can I watch?", answer: "Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles. You can also download your favorite shows with the iOS or Android app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere." },
+    { id: 3, question: "How are the movie recommendations generated?", answer: "We use data from TMDB, along with categories, tags, and genre, to suggest movies that actually fit your vibe." },
 
-    { id: 4, question: "How do I cancel?", answer: "Netflix is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime." },
+    { id: 4, question: "Can I watch movies directly on MyNetflix?", answer: "Nope. We don't stream movies - we help you find what to watch. Think of it as your personal movie guide, not a movie player." },
 
-    { id: 5, question: "What can I watch on Netflix?", answer: "Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want." },
+    { id: 5, question: "Why do I need to sign up?", answer: "Signing up lets you save your favorite movies so you can come back to them anytime. It’s quick, easy, and helps you keep track of what you love - no more forgotten titles." },
 
-    { id: 6, question: "Is Netflix good for kids?", answer: "The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space.Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see." },
+    { id: 6, question: "Can I suggest movies to be added?", answer: "Not yet - but it's a feature we're working on. For now, we’re focused on giving solid recommendations from a large, constantly updated database. Got a favorite we missed? Let us know!" },
 ]
 const Faq = () => {
     const [active, setActive] = useState<number | null>(null)

@@ -111,7 +111,7 @@ const Scifi = () => {
                 <Swiper
                     modules={[Navigation, Pagination]}
                     pagination={{ clickable: true }}
-                    navigation
+                    //navigation
                     spaceBetween={30}
                     slidesPerView={6}
                     loop
@@ -151,7 +151,11 @@ const Scifi = () => {
                     <div key={index} className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50">
 
 
-                        <div className="bg-neutral-800 border border-white p-6 rounded-xl max-w-xl text-white relative">
+                        <div className="bg-neutral-800 border border-white rounded-xl max-w-xl text-white relative bg-cover bg-center"
+                            style={{
+                                backgroundImage: `url(https://image.tmdb.org/t/p/w500/${active.poster_path})`,
+                            }}>
+                                <section className='p-6 bg-black/40'>
                             <button
                                 className="absolute top-3 right-3 text-xl hover:bg-neutral-600 rounded-full p-1"
                                 onClick={() => setIsClicked(false)}
@@ -168,16 +172,17 @@ const Scifi = () => {
 
                                     handleButtonClick(email, active)
                                 }
-                            }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to Favourites</button>
+                            }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to My List</button>
                             <Link
                                 href={`/components/${active.id}`}
                                 key={movie.id}
                                 className="inline-block">
                                 <button className="flex items-center gap-2 bg-red-700 px-4 py-2 rounded hover:bg-red-600 transition">
-                                    Watch Now
+                                    See More
                                     <Image src={NextIcon} width={20} height={20} alt="next" />
                                 </button>
                             </Link>
+                            </section>
                         </div>
                     </div>
                 ))}

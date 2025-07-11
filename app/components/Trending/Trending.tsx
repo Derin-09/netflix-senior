@@ -24,7 +24,7 @@ const Trending = () => {
   const [isClicked, setIsClicked] = useState(false)
   const [active, setActive] = useState<Movie | null>(null)
 
-  const Numnum = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+  const Numnum = ['1', '2', '3', '4', '5', '6', '7']
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -65,7 +65,7 @@ const Trending = () => {
       <Swiper
         modules={[Navigation, Pagination]}
         pagination={{ clickable: true }}
-        navigation
+        //navigation
         spaceBetween={30}
         slidesPerView={6}
         loop
@@ -74,12 +74,12 @@ const Trending = () => {
           414: { slidesPerView: 4},
           640: { slidesPerView: 4 },
           768: { slidesPerView: 4 },
-          1024: { slidesPerView: 7 },
-          1280: { slidesPerView: 7 },
+          1024: { slidesPerView: 6 },
+          1280: { slidesPerView: 6 },
           1600: { slidesPerView: 8 },
         }}
 
-        className="overflow-hidden shadow-xl ml-10 pl-10 pr-10"
+        className="overflow-hidden shadow-xl w-[95%]"
           
       >
         {!loading &&
@@ -87,7 +87,7 @@ const Trending = () => {
             <SwiperSlide key={movie.id}>
               <div
                 onClick={() => handleClick(movie)}
-                className="min-w-[170px] h-[250px] rounded-md mb-7 ml-10 bg-cover bg-center cursor-pointer shadow-md relative"
+                className="min-w-[170px] h-[250px] rounded-md mb-7  bg-cover bg-center cursor-pointer shadow-md relative"
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                 }}
@@ -112,8 +112,9 @@ const Trending = () => {
       </Swiper>
 
       {isClicked && active && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50">
-          <div className="bg-neutral-800 border border-white p-6 rounded-xl max-w-xl text-white relative">
+        <div className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50" >
+          <div className="bg-neutral-800 border border-white  rounded-xl max-w-xl text-white relative bg-no-repeat bg-center bg-cover " style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500/${active.poster_path})`}}>
+          <section className='bg-black/40 p-6'>
             <button
               className="absolute top-3 right-3 text-xl hover:bg-neutral-600 rounded-full p-1"
               onClick={() => setIsClicked(false)}
@@ -131,6 +132,7 @@ const Trending = () => {
                 <Image src={NextIcon} width={20} height={20} alt="next" />
               </button>
             </Link>
+            </section>
           </div>
         </div>
       )}
