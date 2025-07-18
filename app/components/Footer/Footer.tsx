@@ -10,15 +10,18 @@ const Footer = () => {
                 <div className=' md:flex justify-center text-center'>
                     <p>Ready to join? </p>
                     <p> Enter your email to join or restart your membership.</p></div>
-                <form className='flex gap-[10px] md:justify-center mt-4  ml-10 mr-8'>
-                    <input placeholder='Email Address' className='w-[100%] md:w-[30%] p-3 rounded-sm text-white border-white border-1
-                        bg-black opacity-70'/>
-                    <Link href={"./components/Presignup"}>
-                        <button className='w-64 flex items-center gap-2 justify-center max-w-[200px] px-[2em]  bg-red-700 rounded-md'>
-                            <p className='py-5'>Get Started</p>
-                            <Image src={Next} width={20} height={20} alt='' className='text-white stroke-current ml-1  float-right' />
-                        </button>
-                    </Link>
+                <form className='md:flex gap-[10px] md:justify-center mt-4  ml-10 mr-8'>
+                    <input
+                        type='email'
+                        placeholder='Email Address'
+                        className='flex-1 p-3 rounded-sm text-white border-white border bg-black bg-opacity-70 mb-2 md:mb-0 col-span-1 w-full'
+                    />
+                    <button
+                        className='flex items-center md:justify-center bg-red-700 rounded-md cursor-pointer px-6 py-3 text-white col-span-1 w-full'
+                    >
+                        <Link href={'/components/Presignup'}>Get Started</Link>
+                        <Image src={Next} width={20} height={20} alt='' className='ml-2' />
+                    </button>
                 </form>
 
                 <a

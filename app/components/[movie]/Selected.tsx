@@ -65,6 +65,7 @@ const Selected = () => {
 
   if (!movieData) return <div className="text-white"><LoadingPage /></div>
 
+
   return (
     <div className="text-white w-full h-screen relative select-none"
       style={{

@@ -71,7 +71,7 @@ const Trending = () => {
         loop
         breakpoints={{
           300: { slidesPerView: 3 },
-          414: { slidesPerView: 4},
+          414: { slidesPerView: 3 },
           640: { slidesPerView: 4 },
           768: { slidesPerView: 4 },
           1024: { slidesPerView: 6 },
@@ -87,7 +87,7 @@ const Trending = () => {
             <SwiperSlide key={movie.id}>
               <div
                 onClick={() => handleClick(movie)}
-                className="min-w-[170px] h-[250px] rounded-md mb-7  bg-cover bg-center cursor-pointer shadow-md relative"
+                className="min-w-[120px] min-h-[200px] rounded-md mb-7  bg-cover bg-center cursor-pointer shadow-md relative"
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                 }}

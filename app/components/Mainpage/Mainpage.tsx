@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 
 const Mainpage = () => {
     return (
-        <main className='z-20 min-w-[500px] w-screen relative '>
+        <main className='z-20  w-screen relative '>
             <House />
             <section>
                 <hr className='w-full   relative p-0.5  bg-gradient-to-r from-orange-500 via-red-500 to-purple-500' />
