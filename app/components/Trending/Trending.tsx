@@ -72,10 +72,11 @@ const Trending = () => {
         breakpoints={{
           300: { slidesPerView: 3 },
           414: { slidesPerView: 3 },
-          640: { slidesPerView: 4 },
-          768: { slidesPerView: 4 },
-          1024: { slidesPerView: 6 },
-          1280: { slidesPerView: 6 },
+          640: { slidesPerView: 5 },
+          768: { slidesPerView: 6 },
+          800: {slidesPerView: 8 },
+          1024: { slidesPerView: 8 },
+          1280: { slidesPerView: 8 },
           1600: { slidesPerView: 8 },
         }}
 
