@@ -10,7 +10,7 @@ export default {
     extend: {
       screens: {
         'xs': '300px',
-        
+
       },
       colors: {
         background: "var(--background)",
@@ -19,5 +19,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+  ],
 } satisfies Config;

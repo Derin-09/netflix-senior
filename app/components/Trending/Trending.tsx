@@ -60,7 +60,7 @@ const Trending = () => {
 
   return (
     <main className='select-none'>
-      <p className="font-bold pl-10 text-white text-xl mb-4">Trending Now</p>
+      <p className="font-bold md:ml-10 ml-5 text-white text-xl mb-4">Trending Now</p>
 
       <Swiper
         modules={[Navigation, Pagination]}
@@ -87,7 +87,7 @@ const Trending = () => {
             <SwiperSlide key={movie.id}>
               <div
                 onClick={() => handleClick(movie)}
-                className="min-w-[120px] min-h-[200px] rounded-md mb-7  bg-cover bg-center cursor-pointer shadow-md relative"
+                className="min-w-[120px] min-h-[200px] rounded-md mb-7  bg-cover bg-center cursor-pointer shadow-md relative md:ml-10 ml-5"
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                 }}

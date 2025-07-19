@@ -28,13 +28,13 @@ const Faq = () => {
     return (
 
         <main className='bg-black pb-10 pt-3'>
-            <p className='font-bold ml-10 pb-4 text-white text-xl'>Frequently Asked Questions</p>
+            <p className='font-bold md:ml-10 ml-5 pb-4 text-white text-xl'>Frequently Asked Questions</p>
 
             <div>
                 {options.map((opt) => (
                     <div key={opt.id}>
                         <div onClick={() => { console.log("clicked", opt.id); setActive(() => active === opt.id ? null : opt.id); }}>
-                            <div className='bg-neutral-800 hover:bg-neutral-700 hover:cursor-pointer ml-10 mr-8 mb-0.5 px-7 py-4 flex justify-between items-center'>
+                            <div className='bg-neutral-800 hover:bg-neutral-700 hover:cursor-pointer md:ml-10 ml-5 md:mr-8 mr-5 mb-0.5 px-7 py-4 flex justify-between items-center'>
 
                                 <p className='text-lg'>{opt.question}</p>
                                 <button className='text-4xl font-extralight'>
@@ -42,7 +42,7 @@ const Faq = () => {
                                 </button>
                             </div>
                             {active === opt.id && (
-                                <div className={`bg-neutral-800  ml-10 mr-8 mb-2 px-7 py-6 flex justify-between items-center text-lg`}>
+                                <div className={`bg-neutral-800  md:ml-10 ml-5 md:mr-8 mr-5 mb-2 px-7 py-6 flex justify-between items-center text-lg`}>
                                     {opt.answer}
                                 </div>
                             )}

@@ -6,7 +6,7 @@ import Next from '@/public/images/next.svg'
 const Footer = () => {
     return (
         <main>
-            <section className='pt-17'>
+            <section className='md:pt-17 pt-10'>
                 <div className=' md:flex justify-center text-center'>
                     <p>Ready to join? </p>
                     <p> Enter your email to join or restart your membership.</p></div>
@@ -14,10 +14,10 @@ const Footer = () => {
                     <input
                         type='email'
                         placeholder='Email Address'
-                        className='flex-1 p-3 rounded-sm text-white border-white border bg-black bg-opacity-70 mb-2 md:mb-0 col-span-1 w-full'
+                        className='md:flex-1 p-3 rounded-sm text-white border-white border bg-black bg-opacity-70 mb-2 md:mb-0 '
                     />
                     <button
-                        className='flex items-center md:justify-center bg-red-700 rounded-md cursor-pointer px-6 py-3 text-white col-span-1 w-full'
+                        className='flex items-center md:justify-center bg-red-700 rounded-md cursor-pointer px-14 py-3 text-white  md:flex-1'
                     >
                         <Link href={'/components/Presignup'}>Get Started</Link>
                         <Image src={Next} width={20} height={20} alt='' className='ml-2' />
@@ -29,7 +29,7 @@ const Footer = () => {
                     <p className='mt-15 ml-10 text-neutral-400 underline'>Questions? Contact us.</p>
                 </a>
 
-                <div className='mt-9 ml-10 mr-8 text-neutral-400 underline flex gap-[300px] leading-[34px] text-sm'>
+                <div className='mt-9 ml-10 mr-8 text-neutral-400 underline flex md:gap-[300px] gap-[100px] leading-[34px] text-sm'>
                     <section>
                         <ul>
                             <li className='hover:text-red-600'><Link href={"./components/FAQ"} >FAQ</Link></li>
