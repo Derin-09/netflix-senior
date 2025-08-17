@@ -6,7 +6,7 @@ This project replicates the core features of Netflix including authentication an
 ## Live Demo  
 [Visit the site](https://netflix-senior.vercel.app/)
 
-## Screenshot and ScreenRecording
+## Screenshot
 
 <img width="1596" height="712" alt="Screenshot 2025-08-17 221808" src="https://github.com/user-attachments/assets/2df79d04-f01d-440c-a4ea-0571751ca563" />
 
