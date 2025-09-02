@@ -4,7 +4,7 @@ A full-featured, responsive Netflix inspired movie recommendation website built 
 This project replicates the core features of Netflix including authentication and user-specific lists.
 
 ## Live Demo  
-[Visit the site](https://netflix-senior.vercel.app/)
+[Visit the site](https://myflix-movies.vercel.app/)
 
 ## Screenshot
 
