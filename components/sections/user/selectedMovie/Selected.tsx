@@ -33,21 +33,21 @@ type Props = {
   movieID: string
 }
 
-export async function generateStaticParams() {
-    const res = await fetch(
-          'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc',
-          {
-            method: 'GET',
-            headers: {
-              accept: 'application/json',
-              Authorization:
-                `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZTNiNzMxODQzZjgyYTI5ZTBkZjZhODlmOTkzMjlkNCIsIm5iZiI6MTc0NDI5NTM0Ny43MDEsInN1YiI6IjY3ZjdkNWIzZDNhYjdkN2E4YmFkNTJjMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2gPACKRazm9HtNi8UeezxgYRzoCl18zXvmShmVGR4jw   `,
-            },
-          }
-        )
+// export async function generateStaticParams() {
+//     const res = await fetch(
+//           'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc',
+//           {
+//             method: 'GET',
+//             headers: {
+//               accept: 'application/json',
+//               Authorization:
+//                 `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZTNiNzMxODQzZjgyYTI5ZTBkZjZhODlmOTkzMjlkNCIsIm5iZiI6MTc0NDI5NTM0Ny43MDEsInN1YiI6IjY3ZjdkNWIzZDNhYjdkN2E4YmFkNTJjMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2gPACKRazm9HtNi8UeezxgYRzoCl18zXvmShmVGR4jw   `,
+//             },
+//           }
+//         )
 
-        const data = await res.json()
-  }
+//         //const data = await res.json()
+//   }
   
     
 
