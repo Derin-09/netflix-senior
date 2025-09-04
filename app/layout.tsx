@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Suspense } from 'react';
-import { NavigationLoader } from './components/NavigationLoader';
+import { Inter } from 'next/font/google'
+import { NavigationLoader } from "@/components/NavigationLoader";
+import { Toaster } from 'sonner'
 
 /*const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+*/
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
-*/
+
 export const metadata: Metadata = {
   title: "Netflix-Inspired",
   description: "Find all the trendy movies and shows here",
@@ -32,14 +35,13 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>My netflix style</title>
       <body
-        //className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        className="w-screen"
+        className={` ${inter.variable} antialiased`}
       >
         <Suspense fallback={null}>
           <NavigationLoader />
         </Suspense>
         {children}
-      
+      <Toaster richColors closeButton />
       </body>
     </html>
   );

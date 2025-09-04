@@ -1,0 +1,10 @@
+import Signin from '@/components/sections/Signing/Signin'
+import React from 'react'
+
+const page = () => {
+  return (
+    <div><Signin/></div>
+  )
+}
+
+export default page
