@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Netflix-Inspired",
+  title: "MyFlix",
   description: "Find all the trendy movies and shows here",
   icons: {
     icon: '/favicon.ico', 

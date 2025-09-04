@@ -35,9 +35,9 @@ const Successful = () => {
                     <p className='text-sm text-center '>STEP 3 OF 3</p>
                     <p className='text-4xl text-neutral-700 font-bold max-w-[350px]'>Account Created</p>
                     <p className='text-xl  mt-7 max-w-[350px]'>Use this email to access your account:</p>
-                    <p>{email ? email : "nothing"}</p>
+                    <p>{email ? email : ""}</p>
                     <Link
-                        href={'./Signin'}>
+                        href={'/SignIn'}>
                         <button className='text-2xl font-bold  text-center mt-7 py-5 px-5 bg-red-600 rounded-md  w-[350px] text-white mb-5 hover:cursor-pointer hover:bg-red-700 '>Next</button></Link>
                 </div>
             </div>

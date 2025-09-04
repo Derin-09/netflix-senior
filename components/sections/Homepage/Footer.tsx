@@ -6,9 +6,9 @@ const Footer = () => {
     return (
         <section style={{ fontFamily: 'var(--font-inter)'}}>
             <section className='md:pt-17 pt-10'>
-                <div className=' md:flex justify-center text-center'>
+                <div className=' md:flex gap-2 justify-center text-center'>
                     <p>Ready to join? </p>
-                    <p> Enter your email to join or restart your membership.</p></div>
+                    <p>Enter your email to join or restart your membership.</p></div>
                 <form className='md:flex gap-[10px] md:justify-center mt-4  ml-10 mr-8'>
                     <input
                         type='email'

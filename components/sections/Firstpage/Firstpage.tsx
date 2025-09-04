@@ -19,6 +19,7 @@ import Adventure from './Adventure'
 import Fantasy from './Fantasy'
 import Scifi from './Scifi'
 import '@/components/sections/LoadingPage/LoadingPage.css'
+import { toast } from 'sonner'
 
 
 const createUserList = async (id: string | null | undefined, movie: Movie) => {
@@ -33,7 +34,7 @@ const createUserList = async (id: string | null | undefined, movie: Movie) => {
         });
 
         if (movieAlreadyExists) {
-            alert("Movie already in your list!");
+            toast("Movie already in your list!");
             return;
         }
         const docRef = await addDoc(collection(db, "list"), {
@@ -42,7 +43,7 @@ const createUserList = async (id: string | null | undefined, movie: Movie) => {
         });
 
         console.log("Document written with ID:", docRef.id);
-        alert("Success!");
+        toast.success("Success!");
     } catch (err) {
         console.error("Error adding document:", err);
     }
@@ -158,7 +159,7 @@ const Firstpage = () => {
                         <section key={index} className=''>
 
                             <SwiperSlide key={movie.id} className=''>
-                                <Link href={`/components/${movie.id}`}>
+                                <Link href={`/${movie.id}`}>
                                     <div
                                         className="md:h-screen h-[320px] mb-0 bg-cover bg-center cursor-pointer shadow-md relative "
                                         style={{
