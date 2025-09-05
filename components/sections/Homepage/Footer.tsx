@@ -5,23 +5,25 @@ import { FaChevronRight } from "react-icons/fa"
 const Footer = () => {
     return (
         <section style={{ fontFamily: 'var(--font-inter)'}}>
-            <section className='md:pt-17 pt-10'>
+            <section className='md:pt-17 pt-10 '>
                 <div className=' md:flex gap-2 justify-center text-center'>
                     <p>Ready to join? </p>
                     <p>Enter your email to join or restart your membership.</p></div>
-                <form className='md:flex gap-[10px] md:justify-center mt-4  ml-10 mr-8'>
+                    <div className='md:flex flex-col justify-center items-center'>
+                <form className='md:flex gap-[10px] md:justify-center mt-4 w-full md:w-[60%] px-5 '>
                     <input
                         type='email'
                         placeholder='Email Address'
-                        className='md:flex-1 p-3 rounded-sm text-white border-white border bg-black bg-opacity-70 mb-2 md:mb-0 '
+                        className='md:flex-1 p-3 w-full rounded-sm text-white border-white border bg-black bg-opacity-70 mb-2 md:mb-0 '
                     />
                     <button
-                        className='flex gap-2 items-center md:justify-center bg-red-700 rounded-md cursor-pointer px-14 py-3 text-white  md:flex-1'
+                        className='flex gap-2 items-center md:justify-center bg-red-700 rounded-md cursor-pointer pl-4 py-3 text-white w-full  md:flex-1'
                     >
                         <Link href={'/Presignup'}>Get Started</Link>
                         <FaChevronRight />
                     </button>
                 </form>
+                </div>
 
                 <a
                     href="mailto:aderinsolasamashimi@gmail.com">

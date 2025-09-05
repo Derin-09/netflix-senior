@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, db } from '@/app/firebase'
 import { getDocs, collection, where, query, addDoc } from 'firebase/firestore'
+import { FaChevronRight } from 'react-icons/fa'
 
 type Movie = {
     id: number
@@ -119,7 +120,7 @@ const Adventure = () => {
                 <p className='text-3xl font-bold pt-7 pb-3'>Adventure</p>
                 <Swiper
                     modules={[Navigation, Pagination]}
-                    pagination={{ clickable: true }}
+                    //pagination={{ clickable: true }}
                     //navigation
                     spaceBetween={30}
                     slidesPerView={6}
@@ -156,9 +157,14 @@ const Adventure = () => {
 
                 </Swiper>
 
-                {isClicked && active && movies.map((movie, index) =>
+                {isClicked && active && 
+                //movies.map((movie, index) =>
                 (
-                    <div key={index} className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50">
+                    <div 
+                    //key={index} 
+                    // className="fixed inset-0 w-full h-full bg-black/70 flex justify-center items-center z-"
+                    className="fixed inset-0 flex items-center justify-center bg-black/70 z-50 select-none"
+                    >
                         <div className="bg-neutral-800 border border-white rounded-xl max-w-xl text-white relative bg-cover bg-center"
                             style={{
                                 backgroundImage: `url(https://image.tmdb.org/t/p/w500/${active.poster_path})`,
@@ -183,18 +189,19 @@ const Adventure = () => {
                             }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to My List</button>
 
                             <Link
-                                href={`/components/${active.id}`}
-                                key={movie.id}
+                                href={`/${active.id}`}
+                                //key={movie.id}
                                 className="inline-block">
                                 <button className="flex items-center gap-2 bg-red-700 px-4 py-2 rounded hover:bg-red-600 transition">
                                     See More
-                                    <Image src={NextIcon} width={20} height={20} alt="next" />
+                                    <FaChevronRight />
+                                    {/* <Image src={NextIcon} width={20} height={20} alt="next" /> */}
                                 </button>
                             </Link>
                             </section>
                         </div>
                     </div>
-                ))}
+                )}
             </section>
         </main>
     )

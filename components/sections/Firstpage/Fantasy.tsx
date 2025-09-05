@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, db } from '@/app/firebase'
 import { getDocs, collection, where, query, addDoc } from 'firebase/firestore'
+import { FaChevronRight } from 'react-icons/fa'
 
 
 type Movie = {
@@ -119,7 +120,7 @@ const Fantasy = () => {
                 <p className='text-3xl font-bold pt-7 pb-3'>Fantasy</p>
                 <Swiper
                     modules={[Navigation, Pagination]}
-                    pagination={{ clickable: true }}
+                    //pagination={{ clickable: true }}
                     //navigation
                     spaceBetween={30}
                     slidesPerView={6}
@@ -155,43 +156,47 @@ const Fantasy = () => {
 
                 </Swiper>
 
-                {isClicked && active && movies.map((movie, index) =>
+                {isClicked && active && 
+                // movies.map((movie, index) =>
                 (
-                    <div key={index} className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50">
+                    <div 
+                    // key={index}
+                     className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50">
                         <div className="bg-neutral-800 border border-white rounded-xl max-w-xl text-white relative bg-cover bg-center"
                             style={{
                                 backgroundImage: `url(https://image.tmdb.org/t/p/w500/${active.poster_path})`,
                             }}>
-                                <section className='p-6 bg-black/40'>
-                            <button
-                                className="absolute top-3 right-3 text-xl hover:bg-neutral-600 rounded-full p-1"
-                                onClick={() => setIsClicked(false)}
-                            >
-                                ✕
-                            </button>
-                            <h2 className="text-2xl font-bold mb-4">{active.title}</h2>
-                            <p className="mb-4">{active.overview || 'No plot available'}</p>
-                            <p className="text-sm text-gray-400 mb-4">
-                                Release Date: {active.release_date}
-                            </p>
-                            <button onClick={() => {
-                                if (email) {
-                                    handleButtonClick(email, active)
-                                }
-                            }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to My List</button>
-                            <Link
-                                href={`/components/${active.id}`}
-                                key={movie.id}
-                                className="inline-block">
-                                <button className="flex items-center gap-2 bg-red-700 px-4 py-2 rounded hover:bg-red-600 transition">
-                                    See More
-                                    <Image src={NextIcon} width={20} height={20} alt="next" />
+                            <section className='p-6 bg-black/40'>
+                                <button
+                                    className="absolute top-3 right-3 text-xl hover:bg-neutral-600 rounded-full p-1"
+                                    onClick={() => setIsClicked(false)}
+                                >
+                                    ✕
                                 </button>
-                            </Link>
+                                <h2 className="text-2xl font-bold mb-4">{active.title}</h2>
+                                <p className="mb-4">{active.overview || 'No plot available'}</p>
+                                <p className="text-sm text-gray-400 mb-4">
+                                    Release Date: {active.release_date}
+                                </p>
+                                <button onClick={() => {
+                                    if (email) {
+                                        handleButtonClick(email, active)
+                                    }
+                                }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to My List</button>
+                                <Link
+                                    href={`/${active.id}`}
+                                    // key={movie.id}
+                                    className="inline-block">
+                                    <button className="flex items-center gap-2 bg-red-700 px-4 py-2 rounded hover:bg-red-600 transition">
+                                        See More
+                                        <FaChevronRight />
+                                        {/* <Image src={NextIcon} width={20} height={20} alt="next" /> */}
+                                    </button>
+                                </Link>
                             </section>
                         </div>
                     </div>
-                ))}
+                )}
             </section>
         </main>
     )

@@ -22,7 +22,7 @@ const Home = () => {
                     <div className='flex justify-center items-center flex-1 w-full'>
                         <div className='text-center md:px-4 px-8 md:min-w-[600px] min-w-[350px]'>
                             <p className='text-3xl font-semibold max-w-md mx-auto text-white'>Unlimited movies, TV shows, and more</p>
-                            <p className='text-lg my-1.5 max-w-sm mx-auto text-white'>Let&apos;s Pick the Perfect Movie For You.</p>
+                            <p className='text-lg my-1.5 hidden md:block max-w-sm mx-auto text-white'>Let&apos;s Pick the Perfect Movie For You.</p>
                             <p className='mt-5 max-w-md mx-auto text-white'>Movie picks without the chaos. Enter your Email to create or start your membership.</p>
 
                             <form className='md:flex gap-2 mt-4 max-w-lg mx-auto grid'>

@@ -20,6 +20,7 @@ import Fantasy from './Fantasy'
 import Scifi from './Scifi'
 import '@/components/sections/LoadingPage/LoadingPage.css'
 import { toast } from 'sonner'
+import { FaChevronRight } from 'react-icons/fa'
 
 
 const createUserList = async (id: string | null | undefined, movie: Movie) => {
@@ -77,7 +78,7 @@ const Firstpage = () => {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (!user) {
-                router.push('./Signin')
+                router.push('/')
                 return
             }
             setEmail(user?.email)
@@ -161,7 +162,7 @@ const Firstpage = () => {
                             <SwiperSlide key={movie.id} className=''>
                                 <Link href={`/${movie.id}`}>
                                     <div
-                                        className="md:h-screen h-[320px] mb-0 bg-cover bg-center cursor-pointer shadow-md relative "
+                                        className="md:h-[500px] h-[320px] mb-0 bg-cover bg-center cursor-pointer shadow-md relative "
                                         style={{
                                             backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${movie.backdrop_path})`,
                                             backgroundSize: "cover",
@@ -188,9 +189,9 @@ const Firstpage = () => {
 
                     ))}
                 </Swiper>
-                <div className='fixed max-w-[1180px] xl:max-w-[1460px] top-4 w-full justify-between px-6 font-bold flex z-30'>
+                <div className='fixed max-w[1180px] xl:max-w[1460px] top-4 left-6 right-6 wfull justify-between px6 font-bold flex z-30'>
                     <Link href="./MyList" className='hover:cursor-pointer p-3 py-2  rounded-tl-md rounded-br-md bg-red-600 right-4'>My List</Link>
-                    <button onClick={() => signOut(auth)} className='hover:cursor-pointer p-3 py-2 rounded-tr-md rounded-bl-md bg-red-600'><Link href={'./House'}>Sign out</Link></button>
+                    <button onClick={() => signOut(auth)} className='hover:cursor-pointer p-3 py-2 rounded-tr-md rounded-bl-md bg-red-600'><Link href={'/'}>Sign out</Link></button>
                 </div>
 
                 {loading && (
@@ -209,7 +210,7 @@ const Firstpage = () => {
                     <p className='text-3xl font-bold pt-7 pb-3'>Action</p>
                     <Swiper
                         modules={[Navigation, Pagination]}
-                        pagination={{ clickable: true }}
+                        //pagination={{ clickable: true }}
                         //navigation
                         spaceBetween={30}
                         slidesPerView={6}
@@ -284,10 +285,11 @@ const Firstpage = () => {
                                             handleButtonClick(email, active)
                                         }
                                     }} className=' bg-red-700 hover:bg-red-600 py-2 px-3 rounded-md mr-2'>Add to My List</button>
-                                    <Link href={`/components/${active.id}`}>
+                                    <Link href={`/${active.id}`}>
                                         <button className="flex items-center gap-2 bg-red-700 px-4 py-2 rounded hover:bg-red-600 transition">
                                             See More
-                                            <Image src={NextIcon} width={20} height={20} alt="next" />
+                                            <FaChevronRight />
+                                            {/* <Image src={NextIcon} width={20} height={20} alt="next" /> */}
                                         </button>
                                     </Link>
 

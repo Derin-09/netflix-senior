@@ -37,7 +37,7 @@ export default function RootLayout({
       <body
         className={` ${inter.variable} antialiased`}
       >
-        <Suspense fallback={null}>
+        <Suspense fallback={<NavigationLoader />}>
           <NavigationLoader />
         </Suspense>
         {children}
