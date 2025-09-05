@@ -1,7 +1,5 @@
 'use client'
 import React from 'react'
-import Image from 'next/image'
-import NextIcon from '@/public/images/next.svg'
 import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
